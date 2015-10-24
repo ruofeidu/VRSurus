@@ -13,7 +13,7 @@ SEA3D.getVersion = function() {
 
 }
 
-console.log( 'SEA3D ' + SEA3D.getVersion() );
+// console.log( 'SEA3D ' + SEA3D.getVersion() );
 
 //
 //	Timer

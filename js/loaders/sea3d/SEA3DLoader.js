@@ -1874,7 +1874,7 @@ THREE.SEA3D.prototype.getSkeletonAnimation = function( sea, skl ) {
 		}
 
 		var len = sea.pose[ 0 ].length;
-		console.log(skl); 
+		//console.log(skl); 
 		
 		for ( var j = 0; j < len; j ++ ) {
 

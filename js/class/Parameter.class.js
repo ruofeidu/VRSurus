@@ -13,9 +13,29 @@ var ControlParas = function() {
 	this.useComposer		=	true; 
 }
 
+var SpringerPara = function() {
+	this.posY		=	14.5;
+	this.fileName	=	'./models/springer.sea';
+	this.meshName	=	'elephant';
+	this.crossFade	=	0.5; 
+}
+
+var CameraPara = function() {
+	this.posX	 	= 	0.0; 
+	this.posY	 	= 	50.0; 
+	this.posZ	 	= 	-25.0; 
+}
+
+var CanvasPara = function() {
+	this.container	=	'gl'; 
+}
+
 var Parameters = function() {
 	this.video = new VideoParas(); 
 	this.control = new ControlParas(); 
+	this.springer = new SpringerPara(); 
+	this.camera = new CameraPara(); 
+	this.canvas = new CanvasPara(); 
 }
 
 var Paras = new Parameters(); 
