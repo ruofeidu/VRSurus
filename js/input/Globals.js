@@ -1,7 +1,7 @@
 'use strict';
 // Three.js
 var container, stats;
-var camera, scene, renderer, composer, controls;
+var camera, scene, renderer, composer, controls, manager;
 var springer;
 // shaderToy
 var isMouseDown = false, mousePos = {x:0, y:0, z:0, w:0};

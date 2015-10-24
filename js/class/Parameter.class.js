@@ -30,12 +30,17 @@ var CanvasPara = function() {
 	this.container	=	'gl'; 
 }
 
+var RenderPara = function() {
+	this.postprocessing = false; 
+}
+
 var Parameters = function() {
 	this.video = new VideoParas(); 
 	this.control = new ControlParas(); 
 	this.springer = new SpringerPara(); 
 	this.camera = new CameraPara(); 
 	this.canvas = new CanvasPara(); 
+	this.render = new RenderPara();
 }
 
 var Paras = new Parameters(); 

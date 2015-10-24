@@ -33,4 +33,10 @@
 	<script type="text/javascript" src="js/loaders/sea3d/SEA3D.js"></script>
 	<script type="text/javascript" src="js/loaders/sea3d/SEA3DLZMA.js"></script>
 	<script type="text/javascript" src="js/loaders/sea3d/SEA3DLoader.js"></script>
+	<script type="text/javascript" src="js/lib/mousetrap.min.js"></script>
+	
+	<script type="text/javascript" src="js/lib/vr/webvr-polyfill.js"></script>
+	<script type="text/javascript" src="js/lib/vr/VRControls.js"></script>
+	<script type="text/javascript" src="js/lib/vr/VREffect.js"></script>
+	<script type="text/javascript" src="js/lib/vr/webvr-manager.js"></script>
 </head>

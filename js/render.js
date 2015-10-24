@@ -4,6 +4,7 @@ function onWindowResize() {
 	camera.aspect = window.innerWidth / window.innerHeight;
 	camera.updateProjectionMatrix();
 	renderer.setSize( window.innerWidth, window.innerHeight );
+	if (vvr.effect) vvr.effect.setSize(window.innerWidth, window.innerHeight);
 }
 
 function animate() {
@@ -13,11 +14,25 @@ function animate() {
 	THREE.SEA3D.AnimationHandler.update( delta );
 	// Update Three.JS Animations
 	THREE.AnimationHandler.update( delta );
+	
 	render( delta );
 	stats.update();
 }
 
-function render( dlt ) {
-	renderer.render( scene, camera );
-	//composer.render( dlt );
+function render( delta ) {
+	//if (vvr.isEnabled()) {
+	if (vvr.controls) {
+		vvr.controls.update();
+		vvr.effect.render(scene, camera);
+	}
+	
+	/*
+	if (vvr.inited && vvr.isEnabled()) {
+		controls.update();
+		vvr.effect.render(scene, camera);
+	} 
+	else {
+		renderer.render(scene, camera);
+	}
+	*/
 }
