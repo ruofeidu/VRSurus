@@ -23,7 +23,19 @@ function render( delta ) {
 	//if (vvr.isEnabled()) {
 	if (vvr.controls) {
 		vvr.controls.update();
+		camera.translateY(Paras.camera.posY); 
+		camera.translateZ(Paras.camera.posZ); 
+		camera.translateX(Paras.camera.posX); 
+	}
+	
+	
+	surus.get().position.set(Paras.surus.posX, Paras.surus.posY, Paras.surus.posZ); 
+	
+	if (vvr.isEnabled()) {
 		vvr.effect.render(scene, camera);
+	} else {
+		vvr.effect.render(scene, camera);
+		//renderer.render(scene, camera);
 	}
 	
 	/*

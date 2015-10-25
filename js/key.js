@@ -1,7 +1,20 @@
 Mousetrap.bind('1', function() { 
-	springer.attack(); 
+	surus.attack(); 
 }, 'keydown');
 
 Mousetrap.bind('2', function() { 
-	springer.idle(); 
+	surus.idle(); 
+}, 'keydown');
+
+Mousetrap.bind('space', function() { 
+	surus.howl.play(); 
+}, 'keydown');
+
+Mousetrap.bind('s', function() { 
+	surus.sew.play(); 
+}, 'keydown');
+
+
+Mousetrap.bind('d', function() { 
+	surus.sew2.play(); 
 }, 'keydown');
