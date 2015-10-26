@@ -1,3 +1,5 @@
+'use strict';
+
 function initSurus() {
 	surus = new THREE.SEA3D({
 		autoPlay : false, 	// Auto play animations
@@ -23,6 +25,7 @@ function initSurus() {
 	surus.onComplete = function( e ) {
 		surus.ready = true; 
 		controls = new THREE.OrbitControls( camera );
+		initAudio(); 
 		animate();
 	};
 

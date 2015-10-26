@@ -5,6 +5,7 @@
 	<script type="text/javascript" src="js/class/vvr.class.js"></script>
 	<script type="text/javascript" src="js/surus.js"></script>
 	<script type="text/javascript" src="js/debug.js"></script>
+	<script type="text/javascript" src="js/audio.js"></script>
 	<script type="text/javascript" src="js/init.js"></script>
 	<script type="text/javascript" src="js/render.js"></script>
 	<script type="text/javascript" src="js/ninjaterp.js"></script>
