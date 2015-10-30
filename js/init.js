@@ -1,4 +1,8 @@
 'use strict';
+function checkLoading() {
+	++g_loadedItems;
+	console.log('Loading: ' + g_loadedItems);
+}
 
 function initGrid() {
 	var size = 140, step = 10;
@@ -20,7 +24,11 @@ function initGrid() {
 }
 
 function initLights() {
-	scene.add( new THREE.AmbientLight( 0xffffff ) );
+	//scene.add( new THREE.AmbientLight( 0xffffff ) );
+	scene.add( new THREE.AmbientLight( 0x151c0f ) );
+	var pLight = new THREE.PointLight( 0xe3fbdc, 0.9 );
+	pLight.position.set(1000,600,0);
+	scene.add(pLight);
 }
 
 function initPostProcessing() {
@@ -71,6 +79,7 @@ function initStat() {
 
 function initScene() {
 	scene = new THREE.Scene();
+	scene.fog = new THREE.Fog(0xabaf99, 0, 2000);
 }
 
 function initVR() {
@@ -80,6 +89,24 @@ function initVR() {
 	vvr.inited = true; 
 }
 
+function initGround(){
+	var plane = new THREE.PlaneGeometry(5000,5000);
+
+	var material = new THREE.MeshBasicMaterial( { color: 0x0f110d, map: THREE.ImageUtils.loadTexture( "images/ground.jpg", undefined, checkLoading ), } );
+	material.map.wrapS = THREE.RepeatWrapping;	material.map.wrapT = THREE.RepeatWrapping;
+	material.map.repeat.x = 20;	material.map.repeat.y = 20;
+
+	ground = new THREE.Mesh(plane, material);
+	ground.rotation.x = -Math.PI*0.5;
+	scene.add(ground);
+}
+
+function initTreeButterfly() {
+	var loader = new THREE.JSONLoader();
+	loader.load( "models/tree.js", treeLoaded );
+	//loader.load( "models/butterfly.js", butterflyLoaded );
+}
+
 function init() {
 	initScene(); 
 	initCamera(); 
@@ -87,8 +114,10 @@ function init() {
 	
 	initStat(); 
 	
-	initGrid(); 
+	//initGrid(); 
 	initSurus(); 
+	initGround(); 
+	//initTreeButterfly(); 
 	
 	initLights(); 
 	

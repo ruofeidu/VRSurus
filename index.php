@@ -9,6 +9,8 @@
  * University of Maryland, College Park
  */
 include "header.php";
+include "shaders/tree.php";
+
 /*
 include "shader/lightfield-vs.php";
 include "shader/lightfield-fs.php";
