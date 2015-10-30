@@ -36,6 +36,13 @@ var RenderPara = function() {
 	this.postprocessing = false; 
 }
 
+var SkyPara = function() {
+	this.radius			=	2000; 
+	this.widthSegments	=	32; 
+	this.heightSegments	=	32; 
+	this.texFile		=	'images/cloudsphere.jpg'; 
+}
+
 var Parameters = function() {
 	this.video = new VideoParas(); 
 	this.control = new ControlParas(); 
@@ -43,6 +50,7 @@ var Parameters = function() {
 	this.camera = new CameraPara(); 
 	this.canvas = new CanvasPara(); 
 	this.render = new RenderPara();
+	this.sky = new SkyPara(); 
 }
 
 var Paras = new Parameters(); 

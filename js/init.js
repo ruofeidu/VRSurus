@@ -26,8 +26,9 @@ function initGrid() {
 function initLights() {
 	//scene.add( new THREE.AmbientLight( 0xffffff ) );
 	scene.add( new THREE.AmbientLight( 0x151c0f ) );
+	
 	var pLight = new THREE.PointLight( 0xe3fbdc, 0.9 );
-	pLight.position.set(1000,600,0);
+	pLight.position.set(1000, 600, 0);
 	scene.add(pLight);
 }
 
@@ -79,7 +80,7 @@ function initStat() {
 
 function initScene() {
 	scene = new THREE.Scene();
-	scene.fog = new THREE.Fog(0xabaf99, 0, 2000);
+	scene.fog = new THREE.Fog(0xabaf99, 0, 3000);
 }
 
 function initVR() {
@@ -107,6 +108,16 @@ function initTreeButterfly() {
 	//loader.load( "models/butterfly.js", butterflyLoaded );
 }
 
+function initSkySphere() {
+	var skysphere = new THREE.Mesh(
+		new THREE.SphereGeometry(Paras.sky.radius, Paras.sky.widthSegments, Paras.sky.heightSegments),
+		new THREE.MeshBasicMaterial({ map: THREE.ImageUtils.loadTexture( Paras.sky.texFile) })
+	);
+	skysphere.scale.x = -1; 
+	skysphere.material.map.minFilter = THREE.LinearFilter;
+	scene.add(skysphere); 
+}
+	
 function init() {
 	initScene(); 
 	initCamera(); 
@@ -114,10 +125,10 @@ function init() {
 	
 	initStat(); 
 	
-	//initGrid(); 
 	initSurus(); 
 	initGround(); 
 	//initTreeButterfly(); 
+	initSkySphere(); 
 	
 	initLights(); 
 	
