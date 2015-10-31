@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="js/lib/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/lib/three.min.js"></script>
+	<script type="text/javascript" src="js/lib/three.extra.js"></script>
 	<script type="text/javascript" src="js/lib/stats.min.js"></script>
 	<script type="text/javascript" src="js/shaders/CopyShader.js"></script>
 	<script type="text/javascript" src="js/shaders/ColorCorrectionShader.js"></script>

@@ -127,7 +127,7 @@ function init() {
 	
 	initSurus(); 
 	initGround(); 
-	//initTreeButterfly(); 
+	initTreeButterfly(); 
 	initSkySphere(); 
 	
 	initLights(); 
