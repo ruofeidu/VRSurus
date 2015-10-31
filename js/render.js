@@ -28,23 +28,10 @@ function render( delta ) {
 		camera.translateX(Paras.camera.posX); 
 	}
 	
-	
-	surus.get().position.set(Paras.surus.posX, Paras.surus.posY, Paras.surus.posZ); 
-	
 	if (vvr.isEnabled()) {
 		vvr.effect.render(scene, camera);
 	} else {
 		vvr.effect.render(scene, camera);
 		//renderer.render(scene, camera);
 	}
-	
-	/*
-	if (vvr.inited && vvr.isEnabled()) {
-		controls.update();
-		vvr.effect.render(scene, camera);
-	} 
-	else {
-		renderer.render(scene, camera);
-	}
-	*/
 }

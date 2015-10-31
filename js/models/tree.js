@@ -193,7 +193,6 @@ function treeLoaded( geometry, mm ) {
 		mesh.scale.z = 1 + Math.random() * 0.5;
 		var theta = Math.random() * Math.PI, radius = Math.random() * 1000 + 100;
 		mesh.position.set( radius * Math.sin(theta), 150 + Math.random() * 100, radius * Math.cos(theta) ); 
-		console.log(mesh.position); 
 		mesh.rotation.y = Math.random() * Math.PI;
 		scene.add(mesh);
 		objects.push(mesh);

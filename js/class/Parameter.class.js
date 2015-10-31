@@ -11,6 +11,17 @@ var SurusPara = function() {
 	this.posZ		=	2.0; 
 	this.fileName	=	'./models/springer.sea';
 	this.meshName	=	'elephant';
+	this.initRot	=	0; 
+	this.crossFade	=	0.5; 
+}
+
+var PeasantPara = function() {
+	this.posX		=	0.0; 
+	this.posY		=	14.5;
+	this.posZ		=	2.0; 
+	this.fileName	=	'./models/peasant2.sea';
+	this.meshName	=	'elephant';
+	this.initRot	=	0; 
 	this.crossFade	=	0.5; 
 }
 
@@ -36,12 +47,14 @@ var SkyPara = function() {
 }
 
 var Parameters = function() {
+	this.debugMode = true; 
 	this.control = new ControlParas(); 
 	this.surus = new SurusPara(); 
 	this.camera = new CameraPara(); 
 	this.canvas = new CanvasPara(); 
 	this.render = new RenderPara();
 	this.sky = new SkyPara(); 
+	this.peasant = new PeasantPara(); 
 }
 
 var Paras = new Parameters(); 

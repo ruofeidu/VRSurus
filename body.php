@@ -4,6 +4,7 @@
 	<script type="text/javascript" src="js/input/Globals.js"></script>
 	<script type="text/javascript" src="js/class/vvr.class.js"></script>
 	<script type="text/javascript" src="js/surus.js"></script>
+	<script type="text/javascript" src="js/peasant.js"></script>
 	<script type="text/javascript" src="js/debug.js"></script>
 	<script type="text/javascript" src="js/audio.js"></script>
 	<script type="text/javascript" src="js/models/tree.js"></script>

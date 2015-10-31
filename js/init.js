@@ -111,6 +111,7 @@ function init() {
 	initStat(); 
 	
 	initSurus(); 
+	//initPeasant()
 	initGround(); 
 	initTreeButterfly(); 
 	initSkySphere(); 
