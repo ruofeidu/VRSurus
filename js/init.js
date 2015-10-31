@@ -1,26 +1,7 @@
 'use strict';
 function checkLoading() {
 	++g_loadedItems;
-	console.log('Loading: ' + g_loadedItems);
-}
-
-function initGrid() {
-	var size = 140, step = 10;
-	var axisHelper = new THREE.AxisHelper( 15 );
-	scene.add( axisHelper );
-	var geometry = new THREE.Geometry();
-	var material = new THREE.LineBasicMaterial( { color: 0x303030 } );
-
-	for ( var i = - size; i <= size; i += step ) {
-		geometry.vertices.push( new THREE.Vector3( - size, - 0.04, i ) );
-		geometry.vertices.push( new THREE.Vector3(   size, - 0.04, i ) );
-
-		geometry.vertices.push( new THREE.Vector3( i, - 0.04, - size ) );
-		geometry.vertices.push( new THREE.Vector3( i, - 0.04,   size ) );
-	}
-
-	var line = new THREE.LineSegments( geometry, material );
-	scene.add( line );
+	console.log('Loading: ' + g_loadedItems + ' / 8');
 }
 
 function initLights() {
@@ -29,6 +10,10 @@ function initLights() {
 	
 	var pLight = new THREE.PointLight( 0xe3fbdc, 0.9 );
 	pLight.position.set(1000, 600, 0);
+	scene.add(pLight);
+	
+	var pLight = new THREE.PointLight( 0xf8fbdc, 0.3 );
+	pLight.position.set(600, 1000, 0);
 	scene.add(pLight);
 }
 
@@ -91,14 +76,14 @@ function initVR() {
 }
 
 function initGround(){
-	var plane = new THREE.PlaneGeometry(5000,5000);
+	var plane = new THREE.PlaneGeometry(5000, 5000);
 
 	var material = new THREE.MeshBasicMaterial( { color: 0x0f110d, map: THREE.ImageUtils.loadTexture( "images/ground.jpg", undefined, checkLoading ), } );
 	material.map.wrapS = THREE.RepeatWrapping;	material.map.wrapT = THREE.RepeatWrapping;
 	material.map.repeat.x = 20;	material.map.repeat.y = 20;
 
 	ground = new THREE.Mesh(plane, material);
-	ground.rotation.x = -Math.PI*0.5;
+	ground.rotation.x = -Math.PI * 0.5;
 	scene.add(ground);
 }
 
