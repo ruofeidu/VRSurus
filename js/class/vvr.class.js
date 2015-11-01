@@ -15,6 +15,7 @@ vvr.init = function(renderer, camera) {
 	if (!this.enabled) return; 
 	this.effect = new THREE.VREffect(renderer);
 	this.controls = new THREE.VRControls(camera);
+	this.controls.scale = 0.1; 
 	this.manager = new WebVRManager(renderer, this.effect);
 	this.inited = true; 
 }

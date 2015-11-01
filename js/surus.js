@@ -78,6 +78,30 @@ function initSurus() {
 	surus.rightwards = function() {
 		surus.get().rotateOnAxis(new THREE.Vector3(0,1,0), Math.PI / 2 / 60 * 3);
 	}
+	
+	surus.syncCamera = function() {
+		/*
+		var lookAtVector = new THREE.Vector3(0,0, -1);
+		lookAtVector.applyQuaternion(camera.quaternion);
+		surus.get().rotation.y = lookAtVector.y; 
+		*/
+		
+		if (Math.abs(camera.rotation.y) >= Math.PI / 2 || ( Math.abs(camera.rotation.z) < Math.PI / 2 && Math.abs(camera.rotation.x) < Math.PI / 2 ) ) {
+			surus.get().rotation.y = camera.rotation.y; 
+		} else {
+			//surus.get().rotation.y = camera.rotation.y; 
+			if (camera.rotation.y > 0) {
+				surus.get().rotation.y = Math.PI - camera.rotation.y;
+			} else {
+				surus.get().rotation.y = -Math.PI - camera.rotation.y; 
+			}
+		}
+		
+		/*
+		var a = new THREE.Euler().setFromQuaternion( camera.quaternion, 'XYZ' );
+		surus.get().rotation.y = a.y; 
+		*/
+	}
 
 	surus.load( Paras.surus.fileName );
 }

@@ -115,6 +115,7 @@ function init() {
 	initGround(); 
 	initTreeButterfly(); 
 	initSkySphere(); 
+	initWater(); 
 	
 	initLights(); 
 	

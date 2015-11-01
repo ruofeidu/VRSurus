@@ -29,6 +29,7 @@ var CameraPara = function() {
 	this.posX	 	=   0.0; 
 	this.posY	 	= 	26.0; 
 	this.posZ	 	= 	0.0; 
+	this.theta		=	-Math.PI/2; 
 }
 
 var CanvasPara = function() {

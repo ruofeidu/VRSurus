@@ -15,6 +15,11 @@ function animate() {
 	// Update Three.JS Animations
 	THREE.AnimationHandler.update( delta );
 	
+
+	if (water.sys) {
+		water.update(delta); 
+	}
+	
 	render( delta );
 	stats.update();
 }
@@ -23,6 +28,8 @@ function render( delta ) {
 	//if (vvr.isEnabled()) {
 	if (vvr.controls) {
 		vvr.controls.update();
+		surus.syncCamera(); 
+		if (camera.position.x > 8.0) camera.position.x = 8.0; 
 		camera.translateY(Paras.camera.posY); 
 		camera.translateZ(Paras.camera.posZ); 
 		camera.translateX(Paras.camera.posX); 
@@ -34,4 +41,5 @@ function render( delta ) {
 		vvr.effect.render(scene, camera);
 		//renderer.render(scene, camera);
 	}
+	
 }
