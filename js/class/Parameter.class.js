@@ -42,8 +42,8 @@ var RenderPara = function() {
 
 var SkyPara = function() {
 	this.radius			=	2000; 
-	this.widthSegments	=	32; 
-	this.heightSegments	=	32; 
+	this.widthSegments	=	8; 
+	this.heightSegments	=	8; 
 	this.texFile		=	'images/cloudsphere.jpg'; 
 }
 

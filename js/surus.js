@@ -1,5 +1,4 @@
 'use strict';
-
 function initSurus() {
 	surus = new THREE.SEA3D({
 		autoPlay : false, 	// Auto play animations
@@ -7,22 +6,51 @@ function initSurus() {
 	});
 	
 	surus.ready = false; 
+	surus.nosePos = new THREE.Vector3(); 
+	
+	surus.recState = SURUS_IDLE; 
+	surus.curState = SURUS_IDLE; 
 	
 	surus.get = function() {
 		return surus.getMesh( Paras.surus.meshName ); 
 	}
 	
+	surus.getOrientation = function() {
+		return -surus.get().rotation.y + Paras.camera.theta;
+	}
+	
 	surus.idle = function() {
+		surus.curState = SURUS_IDLE; 
 		var s = 'idle' + (~~(Math.random() * 3));
 		surus.get().play(s, Paras.surus.crossFade); 
 	}
-		
-	surus.injured = function() {
-		surus.get().play('injured', Paras.surus.crossFade); 
+	
+	surus.slapLeft = function() {
+		surus.curState = SURUS_SLAP_LEFT; 
+		surus.get().play('attack0', Paras.surus.crossFade); 
+		setTimeout(function(){ surus.idle(); }, 1200);
 	}
 	
-	surus.roar = function() {
+	surus.slapRight = function() {
+		surus.curState = SURUS_SLAP_RIGHT; 
+		surus.get().play('attack2', Paras.surus.crossFade); 
+		setTimeout(function(){ surus.idle(); }, 1500);
+	}
+	
+	surus.spray = function() {
+		surus.curState = SURUS_SPRAY; 
 		surus.get().play('roar', Paras.surus.crossFade); 
+		setTimeout(function(){ surus.idle(); }, 1200 * 2);
+	}
+	
+	surus.thrust = function() {
+		surus.curState = SURUS_THRUST; 
+		surus.get().play('run', Paras.surus.crossFade); 
+		setTimeout(function(){ surus.idle(); }, 600 * 3);
+	}
+	
+	surus.injured = function() {
+		surus.get().play('injured', Paras.surus.crossFade); 
 	}
 	
 	surus.swipe = function() {
@@ -30,7 +58,7 @@ function initSurus() {
 	}
 	
 	surus.swipe2 = function() {
-		surus.get().play('attack1', Paras.surus.crossFade); 
+		surus.get().play('attack2', Paras.surus.crossFade); 
 	}
 	
 	surus.yes = function() {
@@ -54,7 +82,7 @@ function initSurus() {
 	}
 	
 	surus.turnRight = function() {
-		surus.get().play('turn_left', Paras.surus.crossFade); 
+		surus.get().play('turn_right', Paras.surus.crossFade); 
 	}
 	
 	surus.attack = function() {
@@ -85,6 +113,8 @@ function initSurus() {
 		lookAtVector.applyQuaternion(camera.quaternion);
 		surus.get().rotation.y = lookAtVector.y; 
 		*/
+		
+		surus.nosePos.setFromMatrixPosition(surus.get().skeleton.bones[27].matrixWorld);
 		
 		if (Math.abs(camera.rotation.y) >= Math.PI / 2 || ( Math.abs(camera.rotation.z) < Math.PI / 2 && Math.abs(camera.rotation.x) < Math.PI / 2 ) ) {
 			surus.get().rotation.y = camera.rotation.y; 

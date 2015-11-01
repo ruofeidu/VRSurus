@@ -18,11 +18,26 @@ function initGUI() {
 	//p.open(); 
 	
 	p = gui.addFolder('Surus Parameters');
+	p.add(surus.nosePos, "x", -1.0, 1.0).listen();
+	p.add(surus.nosePos, "y", -1.0, 1.0).listen();
+	p.add(surus.nosePos, "z", -1.0, 1.0).listen();
+	
 	p.add(Paras.surus, "posX", -20.0, 20.0);
 	p.add(Paras.surus, "posY", 0, 100.0);
 	p.add(Paras.surus, "posZ", -20.0, 20.0);
 	//p.open(); 
 	
+	p = gui.addFolder('Water Parameters');
+	p.add(water.opt, "velocityRandomness", 0, 3);
+	p.add(water.opt, "positionRandomness", 0, 3);
+	p.add(water.opt, "size", 1, 20);
+	p.add(water.opt, "sizeRandomness", 0, 25);
+	p.add(water.opt, "colorRandomness", 0, 1);
+	p.add(water.opt, "lifetime", .1, 10);
+	p.add(water.opt, "turbulence", 0, 1);
+}
+
+function initDebugBall() {
 	var geometry = new THREE.SphereGeometry( 2, 32, 32 );
 	var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
 	debugBall = new THREE.Mesh( geometry, material );
