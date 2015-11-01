@@ -7,6 +7,8 @@ function initSurus() {
 	
 	surus.ready = false; 
 	surus.nosePos = new THREE.Vector3(); 
+	surus.leftArmPos = new THREE.Vector3(); 
+	surus.rightArmPos = new THREE.Vector3(); 
 	
 	surus.recState = SURUS_IDLE; 
 	surus.curState = SURUS_IDLE; 
@@ -46,7 +48,7 @@ function initSurus() {
 	surus.thrust = function() {
 		surus.curState = SURUS_THRUST; 
 		surus.get().play('run', Paras.surus.crossFade); 
-		setTimeout(function(){ surus.idle(); }, 600 * 3);
+		setTimeout(function(){ surus.idle(); }, 2000);
 	}
 	
 	surus.injured = function() {
@@ -115,6 +117,8 @@ function initSurus() {
 		*/
 		
 		surus.nosePos.setFromMatrixPosition(surus.get().skeleton.bones[27].matrixWorld);
+		surus.leftArmPos.setFromMatrixPosition(surus.get().skeleton.bones[15].matrixWorld);
+		surus.rightArmPos.setFromMatrixPosition(surus.get().skeleton.bones[16].matrixWorld);
 		
 		if (Math.abs(camera.rotation.y) >= Math.PI / 2 || ( Math.abs(camera.rotation.z) < Math.PI / 2 && Math.abs(camera.rotation.x) < Math.PI / 2 ) ) {
 			surus.get().rotation.y = camera.rotation.y; 

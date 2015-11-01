@@ -16,9 +16,9 @@ function animate() {
 	THREE.AnimationHandler.update( delta );
 	
 
-	if (water.sys) {
-		water.update(delta); 
-	}
+	if (water.sys) water.update(delta); 
+	if (fire.sys) fire.update(delta); 
+	if (wind.sys2) wind.update(delta); 
 	
 	render( delta );
 	stats.update();

@@ -35,6 +35,19 @@ function initGUI() {
 	p.add(water.opt, "colorRandomness", 0, 1);
 	p.add(water.opt, "lifetime", .1, 10);
 	p.add(water.opt, "turbulence", 0, 1);
+	
+	
+	p = gui.addFolder('Wind Parameters');
+	p.add(wind.opt1.velocity, "x", -9.9, 9.9);
+	p.add(wind.opt1.velocity, "y", -9.9, 9.9);
+	p.add(wind.opt1.velocity, "z", -9.9, 9.9);
+	p.add(wind.opt1, "velocityRandomness", 0, 3);
+	p.add(wind.opt1, "positionRandomness", 0, 3);
+	p.add(wind.opt1, "size", 1, 20);
+	p.add(wind.opt1, "sizeRandomness", 0, 25);
+	p.add(wind.opt1, "colorRandomness", 0, 1);
+	p.add(wind.opt1, "lifetime", .1, 10);
+	p.add(wind.opt1, "turbulence", 0, 1);
 }
 
 function initDebugBall() {

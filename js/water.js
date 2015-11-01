@@ -26,8 +26,6 @@ function initWater() {
 	}
 	
 	water.update = function(delta) {
-		// water at surus rotation
-		// water.opt.position.set( 15 * Math.cos(-surus.get().rotation.y+Paras.camera.theta), 26, 15 * Math.sin(-surus.get().rotation.y+Paras.camera.theta) ); 
 		// water at the nose
 		water.opt.position.copy( surus.nosePos ); 
 		

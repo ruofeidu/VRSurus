@@ -6,9 +6,11 @@
 	<script type="text/javascript" src="js/surus.js"></script>
 	<script type="text/javascript" src="js/peasant.js"></script>
 	<script type="text/javascript" src="js/water.js"></script>
-	<script type="text/javascript" src="js/debug.js"></script>
+	<script type="text/javascript" src="js/fire.js"></script>
+	<script type="text/javascript" src="js/wind.js"></script>
 	<script type="text/javascript" src="js/audio.js"></script>
 	<script type="text/javascript" src="js/models/tree.js"></script>
+	<script type="text/javascript" src="js/debug.js"></script>
 	<script type="text/javascript" src="js/init.js"></script>
 	<script type="text/javascript" src="js/render.js"></script>
 	<script type="text/javascript" src="js/ninjaterp.js"></script>
