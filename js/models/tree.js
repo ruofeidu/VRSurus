@@ -152,7 +152,7 @@ function treeLoaded( geometry, mm ) {
 		var mesh = new THREE.Mesh(cylinderGeometry, bark2);
 		var s = 1 + Math.random()*1;
 		mesh.scale.set(s, s, s);
-		var theta = Math.random() * Math.PI, radius = Math.random() * 1400 + 100;
+		var theta = Math.random() * Math.PI * 2, radius = Math.random() * 1400 + 100;
 		mesh.position.set( radius * Math.sin(theta), Math.random() - 20, radius * Math.cos(theta) )
 		
 		mesh.rotation.y = Math.random()*(Math.PI*2);
@@ -171,7 +171,7 @@ function treeLoaded( geometry, mm ) {
 		var mesh = new THREE.Mesh(cylinderGeometry, bark3);
 		var s = 1+Math.random()*1;
 		mesh.scale.set(s, s, s);
-		var theta = Math.random() * Math.PI, radius = Math.random() * 1400 + 400;
+		var theta = Math.random() * Math.PI * 2, radius = Math.random() * 1400 + 400;
 		mesh.position.set( radius * Math.sin(theta), 0, radius * Math.cos(theta) )
 		mesh.rotation.y = Math.random() * (Math.PI * 2);
 		mesh.rotation.x = Math.random() * 0.1 - 0.05;
@@ -191,7 +191,7 @@ function treeLoaded( geometry, mm ) {
 		var mesh = new THREE.Mesh(plane, material);
 		mesh.scale.x = 1 + Math.random() * 0.5;
 		mesh.scale.z = 1 + Math.random() * 0.5;
-		var theta = Math.random() * Math.PI, radius = Math.random() * 1000 + 100;
+		var theta = Math.random() * Math.PI * 2, radius = Math.random() * 1000 + 100;
 		mesh.position.set( radius * Math.sin(theta), 150 + Math.random() * 100, radius * Math.cos(theta) ); 
 		mesh.rotation.y = Math.random() * Math.PI;
 		scene.add(mesh);

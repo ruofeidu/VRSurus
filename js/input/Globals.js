@@ -3,7 +3,7 @@
 var container, stats, camera, scene, renderer, composer, controls, manager;
 
 var g_loadedItems = 0, objects = [], trees = [];
-var surus, ground, peasant, debugBall;
+var surus, ground, peasant, factory, debugBall;
 var water = {}, fire = {}, wind = {};
 var audio = {};
 

@@ -18,6 +18,12 @@ Mousetrap.bind('5', function() {
 	surus.thrust(); 
 }, 'keydown');
 
+
+Mousetrap.bind('6', function() { 
+	factory.build(150.0, surus.getOrientation() ); 
+}, 'keydown')
+
+
 Mousetrap.bind('space', function() { 
 	audio.howl.play(); 
 }, 'keydown');

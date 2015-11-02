@@ -25,6 +25,10 @@ var PeasantPara = function() {
 	this.crossFade	=	0.5; 
 }
 
+var FactoryPara = function() {
+	this.fileName	=	'./models/factory.sea'; 
+}
+
 var CameraPara = function() {
 	this.posX	 	=   0.0; 
 	this.posY	 	= 	26.0; 
@@ -55,6 +59,7 @@ var Parameters = function() {
 	this.canvas = new CanvasPara(); 
 	this.render = new RenderPara();
 	this.sky = new SkyPara(); 
+	this.factory = new FactoryPara(); 
 	this.peasant = new PeasantPara(); 
 }
 
