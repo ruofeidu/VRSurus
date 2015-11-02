@@ -4,10 +4,9 @@ function initGarbage() {
 		garbage.push( new THREE.SEA3D({
 			autoPlay : false, 	// Auto play animations
 			container : scene	// Container to add models
-		}); );
+		}) );
 		garbage[i].onComplete = function( e ) {
 			checkLoading(); 
-			console.log( "garbage" + i + " loading:", garbage.file.timer.elapsedTime + "ms" );
 		};
 	}
 	

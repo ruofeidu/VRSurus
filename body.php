@@ -4,13 +4,13 @@
 	<script type="text/javascript" src="js/input/Globals.js"></script>
 	<script type="text/javascript" src="js/class/game.js"></script>
 	<script type="text/javascript" src="js/class/vvr.class.js"></script>
-	<script type="text/javascript" src="js/surus.js"></script>
-	<script type="text/javascript" src="js/factory.js"></script>
-	<script type="text/javascript" src="js/peasant.js"></script>
+	<script type="text/javascript" src="js/models/surus.js"></script>
+	<script type="text/javascript" src="js/models/factory.js"></script>
+	<script type="text/javascript" src="js/models/peasant.js"></script>
 	<script type="text/javascript" src="js/models/garbage.js"></script>
-	<script type="text/javascript" src="js/water.js"></script>
-	<script type="text/javascript" src="js/fire.js"></script>
-	<script type="text/javascript" src="js/wind.js"></script>
+	<script type="text/javascript" src="js/particles/water.js"></script>
+	<script type="text/javascript" src="js/particles/fire.js"></script>
+	<script type="text/javascript" src="js/particles/wind.js"></script>
 	<script type="text/javascript" src="js/audio.js"></script>
 	<script type="text/javascript" src="js/models/tree.js"></script>
 	<script type="text/javascript" src="js/debug.js"></script>
