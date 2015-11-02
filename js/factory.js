@@ -19,15 +19,17 @@ function initFactory() {
 		factory.isWorking = true; 
 		factory.isDestroyed = false; 
 		for (var i = 0; i < factory.meshes.length; i++) {
-			if (factory.meshes[i].position)
-				factory.meshes[i].position.set(R * Math.cos(theta), -50, R * Math.sin(theta) ); 
-				factory.meshes[i].scale.set(5, 5, 5); 
+			if (factory.meshes[i].position) {
+				factory.meshes[i].position.set(R * Math.cos(theta), -45, R * Math.sin(theta) ); 
+				factory.meshes[i].scale.set(5, 5, 5);
+			}				
 		}
 		
 		for (var i = 0; i < factory.meshes.length; i++) {
-			if (factory.meshes[i].animation)
+			if (factory.meshes[i].animation) {
 				factory.meshes[i].animation.timeScale = 3.0;
 				factory.meshes[i].animation.play("root");
+			}
 		}
 		setTimeout(function(){ factory.work() }, 7750);
 	}
@@ -37,14 +39,16 @@ function initFactory() {
 		factory.isWorking = true; 
 		factory.isDestroyed = false; 
 		for (var i = 0; i < factory.meshes.length; i++) {
-			if (factory.meshes[i].animation)
+			if (factory.meshes[i].animation) {
 				factory.meshes[i].animation.timeScale = 1.0;
 				factory.meshes[i].animation.play("work");
+			}
 		}
 	}
 	
 	factory.onComplete = function( e ) {
 		checkLoading(); 
+		console.log( "factory loading:", factory.file.timer.elapsedTime + "ms" );
 	};
 	
 	factory.load( Paras.factory.fileName );

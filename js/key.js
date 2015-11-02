@@ -15,7 +15,7 @@ Mousetrap.bind('4', function() {
 }, 'keydown');
 
 Mousetrap.bind('5', function() { 
-	surus.thrust(); 
+	if (surus.curState !== SURUS_THRUST) surus.thrust(); 
 }, 'keydown');
 
 
@@ -23,6 +23,9 @@ Mousetrap.bind('6', function() {
 	factory.build(150.0, surus.getOrientation() ); 
 }, 'keydown')
 
+Mousetrap.bind('7', function() { 
+	peasant.build(100.0, surus.getOrientation() ); 
+}, 'keydown')
 
 Mousetrap.bind('space', function() { 
 	audio.howl.play(); 

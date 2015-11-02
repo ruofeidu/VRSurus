@@ -99,6 +99,7 @@ function initSurus() {
 		controls = new THREE.OrbitControls( camera );
 		surus.get().rotateOnAxis(new THREE.Vector3(0,1,0), Paras.surus.initRot);
 		surus.get().position.set(Paras.surus.posX, Paras.surus.posY, Paras.surus.posZ); 
+		console.log( "surus loading:", surus.file.timer.elapsedTime + "ms" );
 		initAudio(); 
 		animate();
 	};

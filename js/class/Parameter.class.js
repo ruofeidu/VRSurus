@@ -16,17 +16,16 @@ var SurusPara = function() {
 }
 
 var PeasantPara = function() {
-	this.posX		=	0.0; 
-	this.posY		=	14.5;
-	this.posZ		=	2.0; 
-	this.fileName	=	'./models/peasant2.sea';
-	this.meshName	=	'elephant';
-	this.initRot	=	0; 
-	this.crossFade	=	0.5; 
+	this.fileName	=	'./models/peasant.sea';
 }
 
 var FactoryPara = function() {
 	this.fileName	=	'./models/factory.sea'; 
+}
+
+var GarbagePara = function() {
+	this.count = 4; 
+	this.fileNames	=	['./models/garbage0.sea', './models/garbage1.sea', './models/garbage2.sea', './models/garbage3.sea']; 
 }
 
 var CameraPara = function() {
@@ -61,6 +60,7 @@ var Parameters = function() {
 	this.sky = new SkyPara(); 
 	this.factory = new FactoryPara(); 
 	this.peasant = new PeasantPara(); 
+	this.garbage = new GarbagePara(); 
 }
 
 var Paras = new Parameters(); 

@@ -110,12 +110,13 @@ function init() {
 	
 	initStat(); 
 	
-	initSurus(); 
-	//initPeasant()
+	initPeasant()
 	initFactory(); 
+	initGarbage(); 
 	initGround(); 
 	initTreeButterfly(); 
 	initSkySphere(); 
+	initSurus(); 
 	
 	initWater(); 
 	initFire(); 

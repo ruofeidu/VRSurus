@@ -2,10 +2,12 @@
 	<script type="text/javascript" src="js/input/Constants.js"></script>
 	<script type="text/javascript" src="js/class/Parameter.class.js"></script>
 	<script type="text/javascript" src="js/input/Globals.js"></script>
+	<script type="text/javascript" src="js/class/game.js"></script>
 	<script type="text/javascript" src="js/class/vvr.class.js"></script>
 	<script type="text/javascript" src="js/surus.js"></script>
 	<script type="text/javascript" src="js/factory.js"></script>
 	<script type="text/javascript" src="js/peasant.js"></script>
+	<script type="text/javascript" src="js/models/garbage.js"></script>
 	<script type="text/javascript" src="js/water.js"></script>
 	<script type="text/javascript" src="js/fire.js"></script>
 	<script type="text/javascript" src="js/wind.js"></script>
