@@ -42,4 +42,6 @@
 	<script type="text/javascript" src="js/lib/vr/VRControls.js"></script>
 	<script type="text/javascript" src="js/lib/vr/VREffect.js"></script>
 	<script type="text/javascript" src="js/lib/vr/webvr-manager.js"></script>
+	
+	<script type="text/javascript" src="js/fonts/optimer_bold.typeface.js"></script>
 </head>

@@ -11,6 +11,7 @@ function initFactory() {
 	factory.isDestroyed = false; 
 	factory.radius = 0.0; 
 	factory.degree = 0.0; 
+	factory.sid = 0; 
 	
 	factory.build = function(R, theta) {
 		factory.radius = R; 
@@ -19,9 +20,10 @@ function initFactory() {
 		factory.isWorking = true; 
 		factory.isDestroyed = false; 
 		for (var i = 0; i < factory.meshes.length; i++) {
-			if (factory.meshes[i].position) {
+			if (factory.meshes[i]) {
 				factory.meshes[i].position.set(R * Math.cos(theta), -45, R * Math.sin(theta) ); 
 				factory.meshes[i].scale.set(5, 5, 5);
+				factory.meshes[i].visible = true; 
 			}				
 		}
 		
@@ -32,6 +34,20 @@ function initFactory() {
 			}
 		}
 		setTimeout(function(){ factory.work() }, 7750);
+	}
+	
+	factory.vanish = function() {
+		for (var i = 0; i < factory.meshes.length; i++) {
+			if (factory.meshes[i]) {
+				factory.meshes[i].visible = false; 
+			}
+		}
+	}
+	
+	factory.die = function() {
+		factory.isDestroyed = true; 
+		factory.isWorking = false; 
+		setTimeout(function(){ factory.vanish(); }, 1500);
 	}
 	
 	factory.work = function() {

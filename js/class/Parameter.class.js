@@ -15,6 +15,11 @@ var SurusPara = function() {
 	this.crossFade	=	0.5; 
 }
 
+var ScorePara = function() {
+	this.relPos		=	new THREE.Vector3(19.9, 19.9, -19.9);
+	this.pos		=	new THREE.Vector3(); 
+}
+
 var PeasantPara = function() {
 	this.fileName	=	'./models/peasant.sea';
 }
@@ -43,6 +48,11 @@ var RenderPara = function() {
 	this.postprocessing = false; 
 }
 
+var StarPara = function() {
+	this.count		=	6; 
+	
+}
+
 var SkyPara = function() {
 	this.radius			=	2000; 
 	this.widthSegments	=	8; 
@@ -61,6 +71,8 @@ var Parameters = function() {
 	this.factory = new FactoryPara(); 
 	this.peasant = new PeasantPara(); 
 	this.garbage = new GarbagePara(); 
+	this.score = new ScorePara(); 
+	this.star = new StarPara(); 
 }
 
 var Paras = new Parameters(); 

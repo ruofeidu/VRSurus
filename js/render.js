@@ -10,18 +10,16 @@ function onWindowResize() {
 function animate() {
 	var delta = clock.getDelta();
 	requestAnimationFrame( animate );
-	// Update SEA3D Animations
-	THREE.SEA3D.AnimationHandler.update( delta );
-	// Update Three.JS Animations
-	THREE.AnimationHandler.update( delta );
-	
+	THREE.SEA3D.AnimationHandler.update( delta );	// Update SEA3D Animations
+	THREE.AnimationHandler.update( delta );			// Update Three.JS Animations
 
 	if (water.sys) water.update(delta); 
 	if (fire.sys) fire.update(delta); 
 	if (wind.sys2) wind.update(delta); 
-	
+	if (score.text) score.update(100, surus.getOrientation()); 
 	render( delta );
-	stats.update();
+	
+	if (Paras.debugMode) stats.update();
 }
 
 function render( delta ) {

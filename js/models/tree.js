@@ -21,15 +21,15 @@ function getTreeMaterial (texture, shadow) {
 	return material;
 }
 
-function getBarkMaterial(shadowMap) {
+function getBarkMaterial(diffuseTex, normalTex, shadowTex) {
 	var material = new THREE.MeshPhongMaterial( {
 		color: 0x331100,
 		specular: 0x444444,
 		shininess: 2,
 		reflectivity: 0,
-		map: THREE.ImageUtils.loadTexture( "images/bark-diffuse.jpg", undefined, checkLoading ),
-		normalMap: THREE.ImageUtils.loadTexture( "images/bark-normal.jpg", undefined, checkLoading ),
-		aoMap: shadowMap,
+		map: diffuseTex,
+		normalMap: normalTex,
+		aoMap: shadowTex,
 		normalScale: new THREE.Vector2( 1, 1 ), 
 		aoMapIntensity: 1,
 		displacementBias: -0.428408,
@@ -43,15 +43,15 @@ function getBarkMaterial(shadowMap) {
 	return material; 
 }
 
-function getBarkMaterial2(shadowMap) {
+function getBarkMaterial2(diffuseTex, normalTex, shadowTex) {
 	var material = new THREE.MeshPhongMaterial( {
 		color: 0xffffff,
 		specular: 0x111111,
 		shininess: 1,
 		reflectivity: 0,
-		map: THREE.ImageUtils.loadTexture( "images/bark-diffuse.jpg", undefined, checkLoading ),
-		normalMap: THREE.ImageUtils.loadTexture( "images/bark-normal.jpg", undefined, checkLoading ),
-		aoMap: shadowMap,
+		map: diffuseTex,
+		normalMap: normalTex,
+		aoMap: shadowTex,
 		normalScale: new THREE.Vector2( 20, 10 ), 
 		aoMapIntensity: 1,
 		displacementBias: -0.428408,
@@ -65,15 +65,15 @@ function getBarkMaterial2(shadowMap) {
 	return material; 
 }
 
-function getBarkMaterial3(shadowMap) {
+function getBarkMaterial3(diffuseTex, normalTex, shadowTex) {
 	var material = new THREE.MeshPhongMaterial( {
 		color: 0x331100,
 		specular: 0x444444,
 		shininess: 30,
 		reflectivity: 0,
-		map: THREE.ImageUtils.loadTexture( "images/bark3-diffuse.jpg", undefined, checkLoading ),
-		normalMap: THREE.ImageUtils.loadTexture( "images/bark3-normal.jpg", undefined, checkLoading ),
-		aoMap: shadowMap,
+		map: diffuseTex,
+		normalMap: normalTex,
+		aoMap: shadowTex,
 		normalScale: new THREE.Vector2( 1, 1 ), 
 		aoMapIntensity: 1,
 		displacementBias: -0.428408,
@@ -90,9 +90,13 @@ function getBarkMaterial3(shadowMap) {
 function treeLoaded( geometry, mm ) {
 	var texture = THREE.ImageUtils.loadTexture( "images/leaves.png", undefined, checkLoading );				texture.wrapS = THREE.RepeatWrapping;				texture.wrapT = THREE.RepeatWrapping;
 	var shadow = THREE.ImageUtils.loadTexture( "images/leaves-shadow.jpg", undefined, checkLoading );		shadow.wrapS = THREE.MirroredRepeatWrapping;		shadow.wrapT = THREE.MirroredRepeatWrapping;
+	var barkDiffuse = THREE.ImageUtils.loadTexture( "images/bark-diffuse.jpg", undefined, checkLoading); 
+	var barkNormal = THREE.ImageUtils.loadTexture( "images/bark-normal.jpg", undefined, checkLoading ); 
+	//var bark3Diffuse = THREE.ImageUtils.loadTexture( "images/bark3-diffuse.jpg", undefined, checkLoading); 
+	//var bark3Normal = THREE.ImageUtils.loadTexture( "images/bark3-normal.jpg", undefined, checkLoading ); 
 	
 	// bark
-	var bark = getBarkMaterial(shadow); 
+	var bark = getBarkMaterial(barkDiffuse, barkNormal, shadow); 
 	
 	// cap
 	var cap = new THREE.MeshPhongMaterial( {map: THREE.ImageUtils.loadTexture( "images/trunk.jpg", undefined, checkLoading ), color: 0x333333, side: THREE.DoubleSide} );
@@ -106,11 +110,11 @@ function treeLoaded( geometry, mm ) {
 	// trees
 	for (var i = 0; i < num + 2; i++) {
 		var material0 = getTreeMaterial(texture, shadow);
-		material0.uniforms.color.value = new THREE.Color().setHSL(0.2 + Math.random()*0.05,0.3,0.5);
+		material0.uniforms.color.value = new THREE.Color().setHSL(0.2 + Math.random() * 0.05, 0.3, 0.5);
 		var mf = new THREE.MeshFaceMaterial( [bark, cap, material0, material0, branches] );
 		var tree = new THREE.Mesh( geometry, mf );
 		var s = 13 + Math.random() * 12;
-		tree.scale.set(s,s,s);
+		tree.scale.set(s, s, s);
 		
 		if (i >= num) {
 			tree.isCenter = true;
@@ -123,9 +127,9 @@ function treeLoaded( geometry, mm ) {
 			tree.position.set( centroid.x + Math.random()*100 - 50, Math.random() - 5, centroid.z + Math.random() * 100 - 50 );
 		}
 		
-		tree.rotation.y = Math.random()*(Math.PI*2);
-		tree.rotation.x = Math.random()*0.4-0.2;
-		tree.rotation.z = Math.random()*0.4-0.2;
+		tree.rotation.y = Math.random() * (Math.PI * 2);
+		tree.rotation.x = Math.random() * 0.4 - 0.2;
+		tree.rotation.z = Math.random() * 0.4 - 0.2;
 		scene.add(tree);
 		trees.push(tree);
 		objects.push(tree);
@@ -146,7 +150,7 @@ function treeLoaded( geometry, mm ) {
 	cylinderGeometry.computeVertexNormals();
 	cylinderGeometry.computeFaceNormals();
 
-	var bark2 = getBarkMaterial2(shadow);
+	var bark2 = getBarkMaterial2(barkDiffuse, barkNormal, shadow);
 
 	for (var i = 0; i < 30; i++) {
 		var mesh = new THREE.Mesh(cylinderGeometry, bark2);
@@ -161,12 +165,13 @@ function treeLoaded( geometry, mm ) {
 		scene.add(mesh);
 		objects.push(mesh);
 	}
+	
 	// birch
 	cylinderGeometry = new THREE.CylinderGeometry( 2, 6, 300, 12, 1, true );
 	cylinderGeometry.applyMatrix( new THREE.Matrix4().setPosition( new THREE.Vector3( 0, 150, 0 ) ) );
 	cylinderGeometry.mergeVertices();
 
-	var bark3 = getBarkMaterial2(shadow);
+	var bark3 = getBarkMaterial2(barkDiffuse, barkNormal, shadow);
 	for (var i = 0; i < 20; i++) {
 		var mesh = new THREE.Mesh(cylinderGeometry, bark3);
 		var s = 1+Math.random()*1;

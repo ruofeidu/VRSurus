@@ -8,23 +8,42 @@ function initGarbage() {
 		garbage[i].onComplete = function( e ) {
 			checkLoading(); 
 		};
+		garbage[i].isDestroyed = false;
+		garbage[i].sid = 2 + i; 
 	}
 	
-	garbage.build = function() {
-		garbage[i].isDestroyed = false; 
-		for (var i = 0; i < garbage.meshes.length; i++) {
-			R = Math.Random() * 50 + 50; 
-			theta = Math.Random() * Math.PI * 2; 
+	garbage.build = function() { 
+		for (var i = 0; i < Paras.garbage.count; ++i) {
+			var R = Math.random() * 50 + 100; 
+			var theta = Math.random() * Math.PI * 2; 
 			
+			garbage[i].isDestroyed = false;
 			garbage[i].radius = R; 
 			garbage[i].degree = theta; 
-			if (garbage.meshes[i].position) {
-				garbage.meshes[i].position.set(R * Math.cos(theta), -45, R * Math.sin(theta) ); 
-				garbage.meshes[i].scale.set(5, 5, 5);
-			}				
+			garbage[i].meshes[0].position.set(R * Math.cos(theta), 10, R * Math.sin(theta) ); 
+			garbage[i].meshes[0].scale.set(2, 2, 2);	
+			garbage[i].meshes[0].visible = true; 
 		}
 	}
 	
+	garbage.vanish = function(i) {
+		garbage[i].meshes[0].visible = false; 
+	}
+	
+	garbage.die = function(i) {
+		garbage[i].isDestroyed = true; 
+		setTimeout(function(){ garbage.vanish(i); }, 1500);
+	}
+	
+	/*
+	getbage.getLeft = function() {
+		var ans = 0; 
+		for (var i = 0; i < Paras.garbage.count; ++i) if (!garbage[i].isDestroyed) {
+			++ans; 
+		}
+		return ans; 
+	}
+	*/
 	
 	for (var i = 0; i < Paras.garbage.count; ++i) {
 		garbage[i].load( Paras.garbage.fileNames[i] ); 

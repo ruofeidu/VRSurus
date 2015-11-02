@@ -12,6 +12,7 @@ function initPeasant() {
 	peasant.radius = 0.0; 
 	peasant.degree = 0.0; 
 	peasant.initPos = []; 
+	peasant.sid = 1; 
 	
 	peasant.build = function(R, theta) {
 		peasant.radius = R; 
@@ -22,6 +23,7 @@ function initPeasant() {
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].position) {
 				peasant.meshes[i].position.copy(peasant.initPos[i]); 
+				peasant.meshes[i].visible = true; 
 			}
 		}		
 		for (var i = 0; i < peasant.meshes.length; i++) {
@@ -36,13 +38,55 @@ function initPeasant() {
 		peasant.work();
 	}
 	
+	peasant.vanish = function() {
+		for (var i = 0; i < peasant.meshes.length; i++) {
+			if (peasant.meshes[i].position) {
+				peasant.meshes[i].position.copy(peasant.initPos[i]); 
+				peasant.meshes[i].visible = false; 
+			}
+		}		
+	}
+	
+	peasant.die = function() {
+		peasant.isBuilding = false; 
+		peasant.isWorking = false; 
+		peasant.isDestroyed = true; 
+		
+		for (var i = 0; i < peasant.meshes.length; i++) {
+			if (peasant.meshes[i].animations[1]) {
+				peasant.meshes[i].animations[1].timeScale = 1.0;
+				peasant.meshes[i].animations[1].reset();
+				peasant.meshes[i].animations[1].stop();
+			}
+		}
+		
+		for (var i = 0; i < peasant.meshes.length; i++) {
+			if (peasant.meshes[i].animations[2]) {
+				peasant.meshes[i].animations[2].timeScale = 1.0;
+				peasant.meshes[i].animations[2].reset();
+				peasant.meshes[i].animations[2].play();
+			}
+		}
+		setTimeout(function(){ peasant.vanish(); }, 1500);
+	}
+	
 	peasant.work = function() {
 		peasant.isBuilding = false; 
 		peasant.isWorking = true; 
 		peasant.isDestroyed = false; 
+		
+		for (var i = 0; i < peasant.meshes.length; i++) {
+			if (peasant.meshes[i].animations[2]) {
+				peasant.meshes[i].animations[2].timeScale = 1.0;
+				peasant.meshes[i].animations[2].reset();
+				peasant.meshes[i].animations[2].stop();
+			}
+		}
+		
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].animations[1]) {
 				peasant.meshes[i].animations[1].timeScale = 1.0;
+				peasant.meshes[i].animations[1].reset();
 				peasant.meshes[i].animations[1].play();
 			}
 		}

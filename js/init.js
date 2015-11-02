@@ -1,7 +1,7 @@
 'use strict';
 function checkLoading() {
 	++g_loadedItems;
-	console.log('Loading: ' + g_loadedItems + ' / 8');
+	console.log('Loading: ' + g_loadedItems + ' / 14');
 }
 
 function initLights() {
@@ -57,6 +57,7 @@ function initRenderer() {
 }
 
 function initStat() {
+	if (!Paras.debugMode) return; 
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
 	stats.domElement.style.top = '0px';
@@ -116,11 +117,13 @@ function init() {
 	initGround(); 
 	initTreeButterfly(); 
 	initSkySphere(); 
+	//initScore(); 
 	initSurus(); 
 	
 	initWater(); 
 	initFire(); 
 	initWind(); 
+	initStars(); 
 	
 	initLights(); 
 	

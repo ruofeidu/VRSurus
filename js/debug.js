@@ -1,6 +1,7 @@
 'use strict';
 
 function initGUI() {
+	if (!Paras.debugMode) return; 
 	var gui = new dat.GUI();
 	var p = gui.addFolder('Camera Parameters');
 	/*
@@ -48,9 +49,15 @@ function initGUI() {
 	p.add(wind.opt1, "colorRandomness", 0, 1);
 	p.add(wind.opt1, "lifetime", .1, 10);
 	p.add(wind.opt1, "turbulence", 0, 1);
+	
+	p = gui.addFolder('Score Parameters');
+	p.add(Paras.score.relPos, "x", -39.9, 39.9);
+	p.add(Paras.score.relPos, "y", -39.9, 39.9);
+	p.add(Paras.score.relPos, "z", -39.9, 39.9);
 }
 
 function initDebugBall() {
+	if (!Paras.debugMode) return; 
 	var geometry = new THREE.SphereGeometry( 2, 32, 32 );
 	var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
 	debugBall = new THREE.Mesh( geometry, material );
