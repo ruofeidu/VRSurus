@@ -14,6 +14,7 @@ game.start = function() {
 	setTimeout(function(){ peasant.buildInFront() }, Paras.peasant.initTime);
 	setTimeout(function(){ factory.buildInFront() }, Paras.factory.initTime);
 	audio.bgm.play(); 
+	game.started = true; 
 }
 
 game.update = function() {

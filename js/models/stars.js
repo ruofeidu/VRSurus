@@ -11,6 +11,7 @@ function initStars() {
 		
 		stars.push(mesh); 
 		stars[i].blinking = false; 
+		//scene.add()
 		//stars[i].visible = false; 
 	}	
 }

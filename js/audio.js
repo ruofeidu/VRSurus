@@ -5,10 +5,8 @@ function initAudio() {
 	var listener = new THREE.AudioListener();
 	camera.add( listener );
 	
-	audio.bgm = new THREE.Audio( listener ); 
-	audio.bgm.load( 'sounds/bgm.ogg' ); 
-	audio.bgm.setRefDistance( 1000 ); 
-	
+	audio.bgm = new Audio('sounds/bgm.ogg');
+
 	audio.axe = new THREE.Audio( listener ); 
 	audio.axe.load( 'sounds/axe.ogg' ); 
 	audio.axe.setRefDistance( 200 ); 
