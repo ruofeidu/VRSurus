@@ -11,17 +11,22 @@ game.start = function() {
 	game.startTime	= 	+new Date(); 
 	game.timeLeft 	=	game.totalTime; 
 	garbage.build(); 
-	setTimeout(function(){ peasant.buildInFront() }, 3000);
-	setTimeout(function(){ factory.buildInFront() }, 6000);
+	setTimeout(function(){ peasant.buildInFront() }, Paras.peasant.initTime);
+	setTimeout(function(){ factory.buildInFront() }, Paras.factory.initTime);
+	audio.bgm.play(); 
 }
 
 game.update = function() {
 	if (!game.started) return; 
 	var curTime = +new Date(); 
 	game.timeLeft = game.totalTime - Math.floor( (curTime - game.startTime) / 1000 ); 
+	if (game.timeLeft <= 0) {
+		game.over();
+	}
 }
 
 game.over = function() {
+	game.started = false; 
 	factory.hide();
 	peasant.hide(); 
 	garbage.hideAll(); 

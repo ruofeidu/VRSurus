@@ -6,10 +6,12 @@ function initStars() {
 	
 	for (var i = 0; i < Paras.star.count; ++i) {
 		var mat = new THREE.MeshBasicMaterial({ transparent: true, alphaTest: 0.5, side: THREE.DoubleSide, map: tex, opacity : 1.0  }); 
-		var mesh = new THREE.Mesh(geo, mat); 
+		var mesh = new THREE.Mesh(geo, mat);
+		mesh.position.set(100, 30, 100); 
+		
 		stars.push(mesh); 
 		stars[i].blinking = false; 
-		stars[i].visible = false; 
+		//stars[i].visible = false; 
 	}	
 }
 
@@ -20,6 +22,7 @@ function starBlink(i, pos) {
 	stars[i].opacity = 0.0; 
 	stars[i].visible = true; 
 	stars[i].position.copy(pos); 
+	stars[i].position.y  = 26; 
 	stars[i].lookAt( camera.position ); 
 }
 

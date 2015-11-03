@@ -17,6 +17,9 @@ function animate() {
 	if (fire.sys) fire.update(delta); 
 	if (wind.sys2) wind.update(delta); 
 	if (score.text) score.update(100, surus.getOrientation()); 
+	
+	game.update();
+	
 	render( delta );
 	
 	if (Paras.debugMode) stats.update();

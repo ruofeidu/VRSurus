@@ -18,7 +18,10 @@
 	<script type="text/javascript" src="js/debug.js"></script>
 	<script type="text/javascript" src="js/init.js"></script>
 	<script type="text/javascript" src="js/render.js"></script>
-	<script type="text/javascript" src="js/ninjaterp.js"></script>
+	<script type="text/javascript" src="js/signals.js"></script>
 	<script type="text/javascript" src="js/key.js"></script>
+	<script type="text/javascript" src="js/gamepad.js"></script>
+	
+	<script type="text/javascript" src="js/ninjaterp.js"></script>
 </body>
 </html>

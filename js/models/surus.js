@@ -48,6 +48,7 @@ function initSurus() {
 	
 	surus.thrust = function() {
 		surus.curState = SURUS_THRUST; 
+		audio.howl.play(); 
 		surus.get().play('run', Paras.surus.crossFade); 
 		setTimeout(function(){ surus.idle(); }, 2000);
 	}
@@ -100,7 +101,8 @@ function initSurus() {
 		surus.get().rotateOnAxis(new THREE.Vector3(0,1,0), Paras.surus.initRot);
 		surus.get().position.set(Paras.surus.posX, Paras.surus.posY, Paras.surus.posZ); 
 		console.log( "surus loading:", surus.file.timer.elapsedTime + "ms" );
-		initAudio(); 
+		
+		surus.get().add(audio.howl); 
 		animate();
 	};
 	

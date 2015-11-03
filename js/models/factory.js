@@ -43,6 +43,7 @@ function initFactory() {
 	}
 	
 	factory.hide = function() {
+		audio.factory.stop(); 
 		for (var i = 0; i < factory.meshes.length; i++) {
 			if (factory.meshes[i]) {
 				factory.meshes[i].visible = false; 
@@ -58,6 +59,7 @@ function initFactory() {
 	factory.die = function() {
 		factory.isDestroyed = true; 
 		factory.isWorking = false; 
+		audio.explode.play(); 
 		setTimeout(function(){ factory.vanish(); }, Paras.factory.dieTime);
 	}
 	
@@ -65,6 +67,7 @@ function initFactory() {
 		factory.isBuilding = false; 
 		factory.isWorking = true; 
 		factory.isDestroyed = false; 
+		audio.factory.play(); 
 		for (var i = 0; i < factory.meshes.length; i++) {
 			if (factory.meshes[i].animation) {
 				factory.meshes[i].animation.timeScale = 1.0;
@@ -75,6 +78,8 @@ function initFactory() {
 	
 	factory.onComplete = function( e ) {
 		checkLoading(); 
+		factory.meshes[0].add(audio.explode); 
+		factory.meshes[1].add(audio.factory); 
 		console.log( "factory loading:", factory.file.timer.elapsedTime + "ms" );
 	};
 	

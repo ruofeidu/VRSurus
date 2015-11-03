@@ -22,13 +22,15 @@ var ScorePara = function() {
 
 var PeasantPara = function() {
 	this.fileName	=	'./models/peasant.sea';
+	this.initTime	=	3000; 
 	this.dieTime	=	1500; 
-	this.spawnTime	=	2000; 
+	this.spawnTime	=	4000; 
 }
 
 var FactoryPara = function() {
 	this.fileName	=	'./models/factory.sea'; 
-	this.spawnTime	=	3000; 
+	this.initTime	=	7000; 
+	this.spawnTime	=	6000; 
 	this.dieTime	=	1500; 
 	this.buildTime	=	7750; 
 	this.buildSpeed	=	3.0; 

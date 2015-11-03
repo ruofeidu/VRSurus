@@ -111,6 +111,8 @@ function init() {
 	
 	initStat(); 
 	
+	initAudio(); 
+	
 	initPeasant()
 	initFactory(); 
 	initGarbage(); 
