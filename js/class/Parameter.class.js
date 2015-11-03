@@ -22,15 +22,26 @@ var ScorePara = function() {
 
 var PeasantPara = function() {
 	this.fileName	=	'./models/peasant.sea';
+	this.dieTime	=	1500; 
+	this.spawnTime	=	2000; 
 }
 
 var FactoryPara = function() {
 	this.fileName	=	'./models/factory.sea'; 
+	this.spawnTime	=	3000; 
+	this.dieTime	=	1500; 
+	this.buildTime	=	7750; 
+	this.buildSpeed	=	3.0; 
+	this.height		=	-45; 
+	this.scale		=	5; 
 }
 
 var GarbagePara = function() {
 	this.count = 4; 
 	this.fileNames	=	['./models/garbage0.sea', './models/garbage1.sea', './models/garbage2.sea', './models/garbage3.sea']; 
+	this.spawnTime	=	1000; 
+	this.spawnLeft	=	1; 
+	this.dieTime	=	1500; 
 }
 
 var CameraPara = function() {

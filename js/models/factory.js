@@ -14,6 +14,8 @@ function initFactory() {
 	factory.sid = 0; 
 	
 	factory.build = function(R, theta) {
+		if (R === undefined) R = Math.random() * 60 + 120;
+		if (theta === undefined) theta = Math.random() * Math.PI * 2; 
 		factory.radius = R; 
 		factory.degree = theta; 
 		factory.isBuilding = true; 
@@ -21,22 +23,26 @@ function initFactory() {
 		factory.isDestroyed = false; 
 		for (var i = 0; i < factory.meshes.length; i++) {
 			if (factory.meshes[i]) {
-				factory.meshes[i].position.set(R * Math.cos(theta), -45, R * Math.sin(theta) ); 
-				factory.meshes[i].scale.set(5, 5, 5);
+				factory.meshes[i].position.set(R * Math.cos(theta), Paras.factory.height, R * Math.sin(theta) ); 
+				factory.meshes[i].scale.set(Paras.factory.scale, Paras.factory.scale, Paras.factory.scale);
 				factory.meshes[i].visible = true; 
 			}				
 		}
 		
 		for (var i = 0; i < factory.meshes.length; i++) {
 			if (factory.meshes[i].animation) {
-				factory.meshes[i].animation.timeScale = 3.0;
+				factory.meshes[i].animation.timeScale = Paras.factory.buildSpeed;
 				factory.meshes[i].animation.play("root");
 			}
 		}
-		setTimeout(function(){ factory.work() }, 7750);
+		setTimeout(function(){ factory.work() }, Paras.factory.buildTime);
 	}
 	
-	factory.vanish = function() {
+	factory.buildInFront = function() {
+		factory.build(150.0, surus.getOrientation());
+	}
+	
+	factory.hide = function() {
 		for (var i = 0; i < factory.meshes.length; i++) {
 			if (factory.meshes[i]) {
 				factory.meshes[i].visible = false; 
@@ -44,10 +50,15 @@ function initFactory() {
 		}
 	}
 	
+	factory.vanish = function() {
+		factory.hide(); 
+		setTimeout(function(){ factory.build(); }, Paras.factory.spawnTime);
+	}
+	
 	factory.die = function() {
 		factory.isDestroyed = true; 
 		factory.isWorking = false; 
-		setTimeout(function(){ factory.vanish(); }, 1500);
+		setTimeout(function(){ factory.vanish(); }, Paras.factory.dieTime);
 	}
 	
 	factory.work = function() {

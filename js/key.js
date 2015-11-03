@@ -19,11 +19,11 @@ Mousetrap.bind('4', function() {
 }, 'keydown');
 
 Mousetrap.bind('6', function() { 
-	factory.build(150.0, surus.getOrientation() ); 
+	factory.buildInFront(); 
 }, 'keydown')
 
 Mousetrap.bind('7', function() { 
-	peasant.build(100.0, surus.getOrientation() ); 
+	peasant.buildInFront(); 
 }, 'keydown')
 
 Mousetrap.bind('8', function() { 
@@ -49,4 +49,8 @@ Mousetrap.bind('a', function() {
 
 Mousetrap.bind('d', function() { 
 	surus.rightwards(); 
+}, 'keydown');
+
+Mousetrap.bind('space', function() { 
+	game.start(); 
 }, 'keydown');

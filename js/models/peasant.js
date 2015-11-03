@@ -15,6 +15,9 @@ function initPeasant() {
 	peasant.sid = 1; 
 	
 	peasant.build = function(R, theta) {
+		if (R === undefined) R = Math.random() * 80 + 100;
+		if (theta === undefined) theta = Math.random() * Math.PI * 2; 
+		
 		peasant.radius = R; 
 		peasant.degree = theta; 
 		peasant.isBuilding = true; 
@@ -38,13 +41,21 @@ function initPeasant() {
 		peasant.work();
 	}
 	
-	peasant.vanish = function() {
+	peasant.buildInFront = function() {
+		peasant.build(100.0, surus.getOrientation());
+	}
+	
+	peasant.hide = function() {
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].position) {
-				peasant.meshes[i].position.copy(peasant.initPos[i]); 
 				peasant.meshes[i].visible = false; 
 			}
-		}		
+		}	
+	}
+	
+	peasant.vanish = function() {
+		peasant.hide(); 
+		setTimeout(function(){ peasant.build(); }, Paras.peasant.spawnTime);
 	}
 	
 	peasant.die = function() {
@@ -54,7 +65,6 @@ function initPeasant() {
 		
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].animations[1]) {
-				peasant.meshes[i].animations[1].timeScale = 1.0;
 				peasant.meshes[i].animations[1].reset();
 				peasant.meshes[i].animations[1].stop();
 			}
@@ -62,12 +72,11 @@ function initPeasant() {
 		
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].animations[2]) {
-				peasant.meshes[i].animations[2].timeScale = 1.0;
 				peasant.meshes[i].animations[2].reset();
 				peasant.meshes[i].animations[2].play();
 			}
 		}
-		setTimeout(function(){ peasant.vanish(); }, 1500);
+		setTimeout(function(){ peasant.vanish(); }, Paras.peasant.dieTime);
 	}
 	
 	peasant.work = function() {
@@ -77,7 +86,6 @@ function initPeasant() {
 		
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].animations[2]) {
-				peasant.meshes[i].animations[2].timeScale = 1.0;
 				peasant.meshes[i].animations[2].reset();
 				peasant.meshes[i].animations[2].stop();
 			}
@@ -85,7 +93,6 @@ function initPeasant() {
 		
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].animations[1]) {
-				peasant.meshes[i].animations[1].timeScale = 1.0;
 				peasant.meshes[i].animations[1].reset();
 				peasant.meshes[i].animations[1].play();
 			}
