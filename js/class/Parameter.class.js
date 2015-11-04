@@ -73,6 +73,11 @@ var SkyPara = function() {
 	this.texFile		=	'images/cloudsphere.jpg'; 
 }
 
+var SignalPara = function() {
+	this.baseURL		=	"http://localhost/ninjaterp/server/";
+	this.fakeInput		=	true; 
+}
+
 var Parameters = function() {
 	this.debugMode = true; 
 	this.control = new ControlParas(); 
@@ -85,6 +90,7 @@ var Parameters = function() {
 	this.peasant = new PeasantPara(); 
 	this.garbage = new GarbagePara(); 
 	this.score = new ScorePara(); 
+	this.signal = new SignalPara(); 
 	this.star = new StarPara(); 
 }
 

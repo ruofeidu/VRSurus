@@ -12,6 +12,8 @@ function animate() {
 	requestAnimationFrame( animate );
 	THREE.SEA3D.AnimationHandler.update( delta );	// Update SEA3D Animations
 	THREE.AnimationHandler.update( delta );			// Update Three.JS Animations
+	
+	updateSignals(); 
 
 	if (water.sys) water.update(delta); 
 	if (fire.sys) fire.update(delta); 

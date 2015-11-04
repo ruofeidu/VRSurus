@@ -4,6 +4,13 @@ use Think\Controller;
 class IndexController extends Controller {
     public function index(){
 		header("Cache-Control: no-cache");
+		
+		if (!empty($_REQUEST["getInputSetOuptut"])) {
+			return $this->getInputSetOuptut($_REQUEST["getInputSetOuptut"]); 
+		} else
+		if (!empty($_REQUEST["getOutputSetInput"])) {
+			return $this->getOutputSetInput($_REQUEST["getOutputSetInput"]); 
+		} else
 		if (!empty($_REQUEST["setInput"])) {
 			return $this->setInput($_REQUEST["setInput"]); 
 		} else
@@ -31,6 +38,23 @@ class IndexController extends Controller {
 		echo 'Wrong Command';
 		return; 
     }
+	
+	public function getInputSetOuptut($str) {
+		$ans = M('data')->where('id=0')->select(); 
+		$res = $ans[0]['data']; 
+		echo $res; 
+		if (strcmp($res, 'I') !== 0) M('data')->where('id=0')->setField('data', 'I'); 
+		M('data')->where('id=1')->setField('data', strval($str));
+		return; 
+	}
+	
+	public function getOutputSetInput($str) {
+		$ans = M('data')->where('id=1')->select(); 
+		$res = $ans[0]['data']; 
+		echo $V; 
+		M('data')->where('id=0')->setField('data', strval($str));
+		return; 
+	}
 	
 	public function setInput($str) {
 		M('data')->where('id=0')->setField('data', strval($str)); echo 'Y'; return; 
@@ -66,7 +90,6 @@ class IndexController extends Controller {
 	public function getOutput() {
 		$ans = M('data')->where('id=1')->select(); 
 		echo $ans[0]['data']; 
-		M('data')->where('id=1')->setField('data', 'I'); 
 		return; 
 	}
 }

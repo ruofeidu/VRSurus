@@ -51,8 +51,7 @@ function initPeasant() {
 				peasant.meshes[i].visible = false; 
 			}
 		}	
-		audio.axe.stop(); 
-		audio.die.stop(); 
+		if (audio.axe.isPlaying) audio.axe.stop(); 
 	}
 	
 	peasant.vanish = function() {
@@ -64,8 +63,8 @@ function initPeasant() {
 		peasant.isBuilding = false; 
 		peasant.isWorking = false; 
 		peasant.isDestroyed = true; 
-		audio.axe.stop();
-		audio.die.play();
+		if (audio.axe.isPlaying) audio.axe.stop(); 
+		if (!audio.die.isPlaying) audio.die.play();
 		
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].animations[1]) {
@@ -87,7 +86,7 @@ function initPeasant() {
 		peasant.isBuilding = false; 
 		peasant.isWorking = true; 
 		peasant.isDestroyed = false; 
-		audio.axe.play();
+		if (!audio.axe.isPlaying) audio.axe.play();
 		
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].animations[2]) {
