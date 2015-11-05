@@ -60,7 +60,7 @@ function initFactory() {
 		factory.isDestroyed = true; 
 		factory.isWorking = false; 
 		if (!audio.explode.isPlaying) audio.explode.play(); 
-		setTimeout(function(){ factory.vanish(); }, Paras.factory.dieTime);
+		setTimeout(function(){ starBlink(0, factory.meshes[0].position); factory.vanish(); }, Paras.factory.dieTime);
 	}
 	
 	factory.work = function() {

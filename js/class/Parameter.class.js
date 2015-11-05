@@ -16,7 +16,8 @@ var SurusPara = function() {
 }
 
 var ScorePara = function() {
-	this.relPos		=	new THREE.Vector3(19.9, 19.9, -19.9);
+	//this.relPos		=	new THREE.Vector3(19.9, 19.9, -19.9);
+	this.relPos		=	new THREE.Vector3(0, 0, -1);
 	this.pos		=	new THREE.Vector3(); 
 }
 

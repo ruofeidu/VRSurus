@@ -1,7 +1,7 @@
 'use strict';
 function initStars() {
 	
-	var geo = new THREE.PlaneGeometry( 20, 20, 20, 20 );
+	var geo = new THREE.PlaneGeometry( 15, 15, 10, 10 );
 	var tex = THREE.ImageUtils.loadTexture('images/star.png'); 
 	
 	for (var i = 0; i < Paras.star.count; ++i) {
@@ -11,12 +11,14 @@ function initStars() {
 		
 		stars.push(mesh); 
 		stars[i].blinking = false; 
-		//scene.add()
-		//stars[i].visible = false; 
+		scene.add(mesh); 
+		stars[i].visible = false; 
 	}	
 }
 
 function starBlink(i, pos) {
+	if (i === undefined) return; 
+	if (pos === undefined) pos = stars[i].position; 
 	if (stars[i].blinking) return; 
 	stars[i].blinking = true; 
 	stars[i].goUp = true; 
@@ -27,7 +29,7 @@ function starBlink(i, pos) {
 	stars[i].lookAt( camera.position ); 
 }
 
-function starUpdate() {
+function starsUpdate() {
 	for (var i = 0; i < Paras.star.count; ++i) if (stars[i].blinking) {
 		if (stars[i].goUp) {
 			stars[i].opacity += 0.1; 

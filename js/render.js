@@ -18,9 +18,9 @@ function animate() {
 	if (water.sys) water.update(delta); 
 	if (fire.sys) fire.update(delta); 
 	if (wind.sys2) wind.update(delta); 
-	if (score.text) score.update(100, surus.getOrientation()); 
-	
-	game.update();
+	if (score.mesh.visible) score.update(); 
+	starsUpdate(); 
+	game.update(); 
 	
 	render( delta );
 	

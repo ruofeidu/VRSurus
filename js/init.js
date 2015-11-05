@@ -119,7 +119,7 @@ function init() {
 	initGround(); 
 	initTreeButterfly(); 
 	initSkySphere(); 
-	//initScore(); 
+	initScore(); 
 	initSurus(); 
 	
 	initWater(); 

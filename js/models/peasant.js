@@ -79,7 +79,7 @@ function initPeasant() {
 				peasant.meshes[i].animations[2].play();
 			}
 		}
-		setTimeout(function(){ peasant.vanish(); }, Paras.peasant.dieTime);
+		setTimeout(function(){ starBlink(1, peasant.meshes[0].position); peasant.vanish(); }, Paras.peasant.dieTime);
 	}
 	
 	peasant.work = function() {

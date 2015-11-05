@@ -49,7 +49,7 @@ function initGarbage() {
 	
 	garbage.die = function(i) {
 		garbage[i].isDestroyed = true; 
-		setTimeout(function(){ garbage.vanish(i); }, Paras.garbage.dieTime);
+		setTimeout(function(){ starBlink(1+i, garbage[i].meshes[0].position); garbage.vanish(i); }, Paras.garbage.dieTime);
 	}
 	
 	

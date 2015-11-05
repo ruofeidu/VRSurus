@@ -15,6 +15,10 @@ game.start = function() {
 	setTimeout(function(){ factory.buildInFront() }, Paras.factory.initTime);
 	audio.bgm.play(); 
 	game.started = true; 
+	surus.initPosition(); 
+	surus.cheering = false; 
+	surus.curState = SURUS_IDLE; 
+	score.mesh.visible = false; 
 }
 
 game.update = function() {
@@ -31,4 +35,7 @@ game.over = function() {
 	factory.hide();
 	peasant.hide(); 
 	garbage.hideAll(); 
+	
+	surus.cheer(); 
+	score.show(); 
 }

@@ -6,6 +6,7 @@ function initSurus() {
 	});
 	
 	surus.ready = false; 
+	surus.cheering = false; 
 	surus.nosePos = new THREE.Vector3(); 
 	surus.leftArmPos = new THREE.Vector3(); 
 	surus.rightArmPos = new THREE.Vector3(); 
@@ -48,7 +49,7 @@ function initSurus() {
 	
 	surus.thrust = function() {
 		surus.curState = SURUS_THRUST; 
-		audio.howl.play(); 
+	    if (!audio.howl.isPlaying()) audio.howl.play(); 
 		surus.get().play('run', Paras.surus.crossFade); 
 		setTimeout(function(){ surus.idle(); }, 2000);
 	}
@@ -93,15 +94,17 @@ function initSurus() {
 		var s = 'attack' + (~~(Math.random() * 2));
 		surus.get().play(s, Paras.surus.crossFade); 	
 	}
+	
+	surus.initPosition = function() {
+		surus.get().rotateOnAxis(new THREE.Vector3(0,1,0), Paras.surus.initRot);
+		surus.get().position.set(Paras.surus.posX, Paras.surus.posY, Paras.surus.posZ); 
+	}
 
 	surus.onComplete = function( e ) {
 		checkLoading(); 
 		surus.ready = true; 
-		controls = new THREE.OrbitControls( camera );
-		surus.get().rotateOnAxis(new THREE.Vector3(0,1,0), Paras.surus.initRot);
-		surus.get().position.set(Paras.surus.posX, Paras.surus.posY, Paras.surus.posZ); 
 		console.log( "surus loading:", surus.file.timer.elapsedTime + "ms" );
-		
+		surus.initPosition(); 
 		surus.get().add(audio.howl); 
 		setTimeout(function(){ animate(); }, 1000);	// delay animate for 1 second.
 	};
@@ -126,20 +129,34 @@ function initSurus() {
 		o = o || surus.getOrientation(); 
 		if (!factory.isDestroyed && surus.checkDegree(o, factory.degree, 30) ) {
 			factory.die(); 
+			score.val += 500; 
 		}
 		
 		if (!peasant.isDestroyed && surus.checkDegree(o, peasant.degree, 30) ) {
 			peasant.die(); 
+			score.val += 300; 
 		}
 		
 		for (var i = 0; i < Paras.garbage.count; ++i) {
 			if (!garbage[i].isDestroyed && surus.checkDegree(o, garbage[i].degree, 30) ) {
-				garbage.die(i); 
+				garbage.die(i);
+				score.val += 100; 				
 			}
 		}
 	}
 	
+	surus.cheer = function() {
+		surus.cheering = true; 
+		var theta = surus.getOrientation(); 
+		var R = 100; 
+		surus.get().position.set(R * Math.cos(theta), Paras.surus.posY, R * Math.sin(theta)); 
+		surus.get().rotateOnAxis(Y_AXIS, Math.PI); 
+		surus.get().play('roar', Paras.surus.crossFade); 
+		//surus.curState = SURUS_SPRAY; 
+	}
+	
 	surus.syncCamera = function() {
+		if (surus.cheering) return; 
 		surus.nosePos.setFromMatrixPosition(surus.get().skeleton.bones[27].matrixWorld);
 		surus.leftArmPos.setFromMatrixPosition(surus.get().skeleton.bones[15].matrixWorld);
 		surus.rightArmPos.setFromMatrixPosition(surus.get().skeleton.bones[16].matrixWorld);

@@ -31,7 +31,6 @@ function updateSignals() {
 	}
 }
 
-
 $( document ).ready(function() {
     console.log( "Running VRSurus Test, a NinjaTerp product by Ruofei Du and Liang He at UMD." );
 	$('#start').click(function() {

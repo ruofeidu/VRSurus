@@ -45,57 +45,40 @@ function bend( group, amount, multiMaterialObject ) {
 	}
 }
 
+
 function initScore() {
-	/*
-	var geometry = new THREE.PlaneGeometry( 5, 20, 32 );
-	var material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
-	score = new THREE.Mesh( geometry, material );
-	score.lookAt( camera.position );
-	scene.add( score );
-	*/
-	score.text = "score: 0",
-	score.geometry = new THREE.TextGeometry( score.text, {
-		size: 50,
-		height: 20,
-		curveSegments: 4,
-		font: "optimer",
-		weight: "bold",
-		style: "normal",
-		bevelThickness: 2,
-		bevelSize: 1.5,
-		bevelEnabled: true,
-		material: 0,
-		extrudeMaterial: 1
-	});
+	score.canvas = document.createElement('canvas');
+	score.context = score.canvas.getContext('2d');
+	score.context.font = "Bold 20px Arial";
+	score.context.fillStyle = "rgba(255,255,255,0.95)";
+
+	score.texture = new THREE.Texture(score.canvas) 
+	score.texture.needsUpdate = true;
 	
-	score.geometry.computeBoundingBox();
-	score.geometry.computeVertexNormals();
+	var geometry = new THREE.PlaneGeometry( 2, 2, 32 );
+	var material = new THREE.MeshBasicMaterial( {color: 0xFF4000, side: THREE.FrontSide, map: score.texture,  transparent: true, alphaTest: 0.5,} );
+	score.mesh = new THREE.Mesh( geometry, material );
+	score.mesh.lookAt( camera.position );
+	score.mesh.visible = false; 
+	scene.add( score.mesh );
 	
-	scene.material = new THREE.MeshFaceMaterial( [
-		new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading } ), // front
-		new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.SmoothShading } ) // side
-	] );
-				
-	score = new THREE.Object3D();
-	var mesh = new THREE.Mesh( score.geometry, score.material );
-	score.add( mesh );
-	score.scale.set( 1, 1, 1 );
-	//bend(score, 100);
-	mesh.renderOrder = 1;
-	scene.add( score ); 
+	score.show = function() {
+		score.context.clearRect(0, 0, score.canvas.width, score.canvas.height);
+		score.context.fillText('Score: ' + score.val, 85, 100);
+		score.mesh.visible = true; 
+	}
 	
-	score.mesh2 = new THREE.Mesh( score.geometry, score.material );
-	scene.add(score.mesh2); 
-	score.mesh2.position.set(20, 20, 20); 
-	/*
-	var ch = String.fromCharCode( keyCode );
-					text += ch;
-					*/
-	score.update = function(R,theta) {
+	score.needsUpdate = function() {
+		return score.mesh.visible; 
+	}
+	
+	score.val = 0; 
+
+	score.update = function(R, theta) {
 		Paras.score.pos.copy(Paras.score.relPos);
 		Paras.score.pos.applyMatrix4( camera.matrixWorld );
 		
-		score.position.copy(Paras.score.pos); 
-		score.lookAt(camera.position); 
+		score.mesh.position.copy(Paras.score.pos); 
+		score.mesh.lookAt(camera.position); 
 	}
 }

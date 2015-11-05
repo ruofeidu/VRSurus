@@ -13,12 +13,12 @@ include "header.php";
 <body>
 	<div id="start" style="color:#FFFFFF; size=20pt">Start / Pause</div>
 	<div class="opt" id="I" style="color:#FFFFFF; size=20pt">Output I</div>
-	<div class="opt" id="V128" style="color:#FFFFFF; size=20pt">Output V128</div>
-	<div class="opt" id="L1" style="color:#FFFFFF; size=20pt">Output L1</div>
-	<div class="opt" id="R1" style="color:#FFFFFF; size=20pt">Output R1</div>
-	<div class="opt" id="S128" style="color:#FFFFFF; size=20pt">Output S128</div>
-	<div class="opt" id="V128S128" style="color:#FFFFFF; size=20pt">Output V128S128</div>
-	<div class="opt" id="V255L1R1S255" style="color:#FFFFFF; size=20pt">Output V255L1R1S255</div>
+	<div class="opt" id="128,0,0,0" style="color:#FFFFFF; size=20pt">Output V128</div>
+	<div class="opt" id="0,1,0,0" style="color:#FFFFFF; size=20pt">Output L1</div>
+	<div class="opt" id="0,0,1,0" style="color:#FFFFFF; size=20pt">Output R1</div>
+	<div class="opt" id="0,0,0,128" style="color:#FFFFFF; size=20pt">Output S128</div>
+	<div class="opt" id="128,0,0,128" style="color:#FFFFFF; size=20pt">Output V128S128</div>
+	<div class="opt" id="255,1,1,255" style="color:#FFFFFF; size=20pt">Output V255L1R1S255</div>
 	
 	<div id="input" style="color:#FFFFFF">Input: </div>
 	<div id="output" style="color:#FFFFFF">Output: </div>
