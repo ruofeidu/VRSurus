@@ -91,7 +91,7 @@ function initGround(){
 function initTreeButterfly() {
 	var loader = new THREE.JSONLoader();
 	loader.load( "models/tree.js", treeLoaded );
-	//loader.load( "models/butterfly.js", butterflyLoaded );
+	loader.load( "models/butterfly.js", butterflyLoaded );
 }
 
 function initSkySphere() {

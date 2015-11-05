@@ -203,3 +203,22 @@ function treeLoaded( geometry, mm ) {
 		objects.push(mesh);
 	}
 }
+
+function butterflyLoaded( geometry ) {
+	geometry.computeMorphNormals();
+	var material = new THREE.MeshPhongMaterial( { color: 0xf7f660, specular: 0x999999, shininess: 60, morphTargets: true, morphNormals: true, side: THREE.DoubleSide, shading: THREE.SmoothShading } );
+	for (var i = 0; i < 4; i++) {
+		var mesh = new THREE.MorphAnimMesh( geometry, material );
+		mesh.duration = 800;
+		mesh.time = Math.random()*mesh.duration;
+		mesh.position.set(Math.random()*300 - 150, i*50, -220 + Math.random()*-200);
+		var s = 0.5 + Math.random()*0.5;
+		mesh.scale.set(s,s,s);
+		scene.add( mesh );
+		var target = new THREE.Vector3(Math.random()*300 - 150, 250 + Math.random()*100 , -200 + Math.random()*-200);
+		var look = new THREE.Vector3();
+		var distance = mesh.position.distanceTo(target);
+		var speed = distance*0.000000001;
+		butterflys.push({mesh: mesh, target: target, time: 0, distance: distance, speed: speed, look: look});
+	}
+}

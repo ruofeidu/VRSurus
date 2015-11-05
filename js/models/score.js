@@ -55,11 +55,18 @@ function initScore() {
 	score.texture = new THREE.Texture(score.canvas) 
 	score.texture.needsUpdate = true;
 	
+	/*
 	var geometry = new THREE.PlaneGeometry( 2, 2, 32 );
 	var material = new THREE.MeshBasicMaterial( {color: 0xFF4000, side: THREE.FrontSide, map: score.texture,  transparent: true, alphaTest: 0.5,} );
 	score.mesh = new THREE.Mesh( geometry, material );
 	score.mesh.lookAt( camera.position );
 	score.mesh.visible = false; 
+	scene.add( score.mesh );
+	*/
+	var material = new THREE.SpriteMaterial( { color: 0xFF4000, map: score.texture, transparent: true, alphaTest: 0.5 } );
+	score.mesh = new THREE.Sprite( material );
+	score.mesh.position.set( 50, 50, 0 );
+	score.mesh.scale.set( 64, 64, 1.0 );
 	scene.add( score.mesh );
 	
 	score.show = function() {
@@ -75,6 +82,7 @@ function initScore() {
 	score.val = 0; 
 
 	score.update = function(R, theta) {
+		return; 
 		Paras.score.pos.copy(Paras.score.relPos);
 		Paras.score.pos.applyMatrix4( camera.matrixWorld );
 		

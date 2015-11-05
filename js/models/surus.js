@@ -49,7 +49,7 @@ function initSurus() {
 	
 	surus.thrust = function() {
 		surus.curState = SURUS_THRUST; 
-	    if (!audio.howl.isPlaying()) audio.howl.play(); 
+	    if (!audio.howl.isPlaying) audio.howl.play(); 
 		surus.get().play('run', Paras.surus.crossFade); 
 		setTimeout(function(){ surus.idle(); }, 2000);
 	}
