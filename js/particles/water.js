@@ -1,3 +1,4 @@
+'use strict';
 function initWater() {
 	water.sys = new THREE.GPUParticleSystem({
         maxParticles: 200000

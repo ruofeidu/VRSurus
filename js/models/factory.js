@@ -11,11 +11,15 @@ function initFactory() {
 	factory.isDestroyed = false; 
 	factory.radius = 0.0; 
 	factory.degree = 0.0; 
-	factory.sid = 0; 
+	factory.sid = 0;
 	
-	factory.build = function(R, theta) {
+	/**
+	 * Build a factory in the game.
+	 */
+	factory.build = function(R, theta, respawn) {
 		if (R === undefined) R = Math.random() * 60 + 120;
 		if (theta === undefined) theta = Math.random() * Math.PI * 2; 
+		if (respawn === undefined) respawn = true; 
 		factory.radius = R; 
 		factory.degree = theta; 
 		factory.isBuilding = true; 
@@ -35,11 +39,11 @@ function initFactory() {
 				factory.meshes[i].animation.play("root");
 			}
 		}
-		setTimeout(function(){ factory.work() }, Paras.factory.buildTime);
+		if (respawn) setTimeout(function(){ factory.work() }, Paras.factory.buildTime);
 	}
 	
 	factory.buildInFront = function() {
-		factory.build(150.0, surus.getOrientation());
+		factory.build(150.0, surus.getOrientation(), false);
 	}
 	
 	factory.hide = function() {
@@ -53,7 +57,7 @@ function initFactory() {
 	
 	factory.vanish = function() {
 		factory.hide(); 
-		setTimeout(function(){ factory.build(); }, Paras.factory.spawnTime);
+		if (game.tutorialStep !== -1) setTimeout(function(){ factory.build(); }, Paras.factory.spawnTime);
 	}
 	
 	factory.die = function() {
@@ -61,6 +65,7 @@ function initFactory() {
 		factory.isWorking = false; 
 		if (!audio.explode.isPlaying) audio.explode.play(); 
 		setTimeout(function(){ starBlink(0, factory.meshes[0].position); factory.vanish(); }, Paras.factory.dieTime);
+		if (game.tutorialStep !== -1) game.tutorial();  
 	}
 	
 	factory.work = function() {

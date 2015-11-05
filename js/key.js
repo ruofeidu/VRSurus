@@ -37,5 +37,22 @@ Mousetrap.bind('d', function() {
 }, 'keydown');
 
 Mousetrap.bind('space', function() { 
+	game.tutorial(); 
+}, 'keydown');
+
+Mousetrap.bind('enter', function() { 
 	game.start(); 
+}, 'keydown');
+
+Mousetrap.bind('shift+enter', function() { 
+	signals.lock = false;
+}, 'keydown');
+
+
+Mousetrap.bind('shift+space', function() { 
+	game.over(); 
+}, 'keydown');
+
+Mousetrap.bind('shift+g', function() { 
+	game.godmode = !game.godmode; 
 }, 'keydown');

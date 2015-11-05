@@ -12,6 +12,19 @@ function initGarbage() {
 		garbage[i].sid = 2 + i; 
 	}
 	
+	garbage.buldInFront = function() {
+		var R = 150; 
+		var theta = surus.getOrientation();
+		
+		var i = 0; 
+		garbage[i].isDestroyed = false;
+		garbage[i].radius = R; 
+		garbage[i].degree = theta; 
+		garbage[i].meshes[0].position.set(R * Math.cos(theta), 10, R * Math.sin(theta) ); 
+		garbage[i].meshes[0].scale.set(2, 2, 2);	
+		garbage[i].meshes[0].visible = true; 
+	}
+	
 	garbage.build = function() { 
 		for (var i = 0; i < Paras.garbage.count; ++i) {
 			var R = Math.random() * 100 + 100; 

@@ -1,3 +1,4 @@
+'use strict';
 function initFire() {
 	fire.sys = new THREE.GPUParticleSystem({
         maxParticles: 200000
@@ -10,7 +11,7 @@ function initFire() {
 		velocity: new THREE.Vector3(10, 0, 10),
 		positionRandomness: 2.0,
 		velocityRandomness: 1.95,
-		color: 0xFF5500,
+		color: 0x9DFF5C,
 		colorRandomness: 0.8,
 		turbulence: .08,
 		lifetime: 8.0,

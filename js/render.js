@@ -18,7 +18,6 @@ function animate() {
 	if (water.sys) water.update(delta); 
 	if (fire.sys) fire.update(delta); 
 	if (wind.sys2) wind.update(delta); 
-	if (score.mesh.visible) score.update(); 
 	starsUpdate(); 
 	game.update(); 
 	

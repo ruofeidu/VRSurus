@@ -2,12 +2,33 @@
 var game = {
 	started		:	false,
 	tutorial	:	false,
+	godmode		:	false,
 	startTime	:	0,
 	totalTime	:	120,
 	timeLeft	:	120,
+	tutorialStep : -1,
+}
+
+game.tutorial = function() {
+	if (game.tutorialStep == -1) {
+		game.tutorialStep = 0; 
+		garbage.buildInFront(); 
+	} else
+	if (game.tutorialStep == 0) {
+		game.tutorialStep = 1; 
+		worker.buildInFront(); 
+	} else 
+	if (game.tutorialStep == 1) {
+		game.tutorialStep = 2; 
+		factory.buildInFront(); 
+	} else {
+		game.tutorialStep = -1; 
+		game.start(); 
+	}
 }
 
 game.start = function() {
+	game.tutorialStep = -1; 
 	game.startTime	= 	+new Date(); 
 	game.timeLeft 	=	game.totalTime; 
 	garbage.build(); 
