@@ -6,6 +6,7 @@ function initAudio() {
 	camera.add( listener );
 	
 	audio.bgm = new Audio('sounds/bgm.ogg');
+	audio.tutorial = new Audio('sounds/tutorial.ogg');
 
 	audio.axe = new THREE.Audio( listener ); 
 	audio.axe.load( 'sounds/axe.ogg' ); 
@@ -32,13 +33,4 @@ function initAudio() {
 	audio.howl.load( 'sounds/howl.ogg' );
 	audio.howl.setRefDistance( 100 );
 	
-	/*
-	audio.sew = new THREE.Audio( listener );
-	audio.sew.load( 'sounds/sew.ogg' );
-	audio.sew.setRefDistance( 50 );
-	
-	audio.sew2 = new THREE.Audio( listener );
-	audio.sew2.load( 'sounds/sew.ogg' );
-	audio.sew2.setRefDistance( -50 );
-	*/
 }
