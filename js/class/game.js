@@ -54,6 +54,7 @@ game.start = function() {
 	surus.cheering = false; 
 	surus.curState = SURUS_IDLE; 
 	score.mesh.visible = false; 
+	tto.play(); 
 }
 
 /**

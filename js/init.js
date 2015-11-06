@@ -170,6 +170,7 @@ function init() {
 	initTreeButterfly(); 
 	initSkySphere(); 
 	initScore(); 
+	initTTO(); 
 	initSurus(); 
 	
 	initWater(); 

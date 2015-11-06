@@ -1,11 +1,16 @@
 'use strict';
+/**
+ * Global variables
+ * This is not a good habit, please avoid defining so many global variables in your project :-) 
+ * @author Ruofei Du
+ */
 // Three.js
 var container, stats, camera, scene, renderer, composer, controls, manager, sceneOrtho, cameraOrtho;
 
 var g_loadedItems = 0, objects = [], trees = [], garbage = [], stars = [], butterflys = [];
 var surus, ground, peasant, factory, debugBall;
 var water = {}, fire = {}, wind = {};
-var audio = {}, game = {}, score = {};
+var audio = {}, game = {}, score = {}, tto = {};
 var signals = {
 	ch : 'a',
 	lock : false,
