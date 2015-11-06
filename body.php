@@ -1,4 +1,5 @@
 <body>
+	<div id="loading" align="center" style="width:100%; height:100%"><img src="images/logo_v1.png" style="vertical-align:middle; padding-top: 40px" ></img></div>
 	<script type="text/javascript" src="js/input/Constants.js"></script>
 	<script type="text/javascript" src="js/class/Parameter.class.js"></script>
 	<script type="text/javascript" src="js/input/Globals.js"></script>

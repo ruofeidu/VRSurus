@@ -1,9 +1,24 @@
 'use strict';
+/**
+ * Initialization of all components
+ * @author Ruofei Du
+ */
+ 
+/**
+ * Check whether all texture and models are successfully loaded.
+ */
 function checkLoading() {
 	++g_loadedItems;
-	console.log('Loading: ' + g_loadedItems + ' / 14');
+	console.log('Loading: ' + g_loadedItems + ' / ' + Paras.control.totalItems);
+	if (g_loadedItems === Paras.control.totalItems) {
+		$("#loading").hide(); 
+		animate();
+	}
 }
 
+/**
+ * One ambient light and two point lights; 
+ */
 function initLights() {
 	//scene.add( new THREE.AmbientLight( 0xffffff ) );
 	scene.add( new THREE.AmbientLight( 0x151c0f ) );
@@ -12,11 +27,14 @@ function initLights() {
 	pLight.position.set(1000, 600, 0);
 	scene.add(pLight);
 	
-	var pLight = new THREE.PointLight( 0xf8fbdc, 0.3 );
-	pLight.position.set(600, 1000, 0);
-	scene.add(pLight);
+	var pLight2 = new THREE.PointLight( 0xf8fbdc, 0.3 );
+	pLight2.position.set(600, 1000, 0);
+	scene.add(pLight2);
 }
 
+/**
+ * Post processing
+ */
 function initPostProcessing() {
 	composer = new THREE.EffectComposer( renderer );
 
@@ -39,6 +57,9 @@ function initPostProcessing() {
 	copyPass.renderToScreen = true;
 }
 
+/**
+ * Camera initialization
+ */
 function initCamera() {
 	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 100000 );
 	camera.position.set( Paras.camera.posX, Paras.camera.posY, Paras.camera.posZ );
@@ -47,6 +68,9 @@ function initCamera() {
 	cameraOrtho.position.z = 10;
 }
 
+/**
+ * Renderer initialization; 
+ */
 function initRenderer() {
 	renderer = new THREE.WebGLRenderer({ antialias: true });
 	renderer.setPixelRatio( window.devicePixelRatio );
@@ -60,6 +84,9 @@ function initRenderer() {
 	window.addEventListener( 'resize', onWindowResize, false );
 }
 
+/**
+ * WebGL statistics
+ */
 function initStat() {
 	if (!Paras.debugMode) return; 
 	stats = new Stats();
@@ -68,12 +95,18 @@ function initStat() {
 	container.appendChild( stats.domElement );
 }
 
+/**
+ * Scene initialization
+ */
 function initScene() {
 	scene = new THREE.Scene();
 	scene.fog = new THREE.Fog(0xabaf99, 0, 3000);
 	sceneOrtho = new THREE.Scene();
 }
 
+/**
+ * VR initialization
+ */
 function initVR() {
 	vvr.effect = new THREE.VREffect(renderer);
 	vvr.controls = new THREE.VRControls(camera);
@@ -81,6 +114,9 @@ function initVR() {
 	vvr.inited = true; 
 }
 
+/**
+ * Ground mesh initialization
+ */
 function initGround(){
 	var plane = new THREE.PlaneGeometry(5000, 5000);
 
@@ -93,12 +129,18 @@ function initGround(){
 	scene.add(ground);
 }
 
+/**
+ * Tree and butterfly initialization
+ */
 function initTreeButterfly() {
 	var loader = new THREE.JSONLoader();
 	loader.load( "models/tree.js", treeLoaded );
 	loader.load( "models/butterfly.js", butterflyLoaded );
 }
 
+/**
+ * Skysphere initialization
+ */
 function initSkySphere() {
 	var skysphere = new THREE.Mesh(
 		new THREE.SphereGeometry(Paras.sky.radius, Paras.sky.widthSegments, Paras.sky.heightSegments),
@@ -109,6 +151,9 @@ function initSkySphere() {
 	scene.add(skysphere); 
 }
 	
+/**
+ * Called by document.ready in jQuery
+ */
 function init() {
 	initScene(); 
 	initCamera(); 

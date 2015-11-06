@@ -8,7 +8,7 @@ function initFactory() {
 	factory.ready = false; 
 	factory.isBuilding = false; 
 	factory.isWorking = false; 
-	factory.isDestroyed = false; 
+	factory.isDestroyed = true; 
 	factory.radius = 0.0; 
 	factory.degree = 0.0; 
 	factory.sid = 0;
@@ -17,6 +17,7 @@ function initFactory() {
 	 * Build a factory in the game.
 	 */
 	factory.build = function(R, theta, respawn) {
+		if (game.isOver) return; 
 		if (R === undefined) R = Math.random() * 60 + 120;
 		if (theta === undefined) theta = Math.random() * Math.PI * 2; 
 		if (respawn === undefined) respawn = true; 
@@ -57,7 +58,7 @@ function initFactory() {
 	
 	factory.vanish = function() {
 		factory.hide(); 
-		if (game.tutorialStep !== -1) setTimeout(function(){ factory.build(); }, Paras.factory.spawnTime);
+		if (game.tutorialStep === -1) setTimeout(function(){ factory.build(); }, Paras.factory.spawnTime);
 	}
 	
 	factory.die = function() {
@@ -69,10 +70,11 @@ function initFactory() {
 	}
 	
 	factory.work = function() {
+		if (game.isOver) return; 
 		factory.isBuilding = false; 
 		factory.isWorking = true; 
 		factory.isDestroyed = false; 
-		if (!audio.factory.isPlaying) audio.factory.play(); 
+		if (!audio.factory.isPlaying && !game.stopAudio) audio.factory.play(); 
 		for (var i = 0; i < factory.meshes.length; i++) {
 			if (factory.meshes[i].animation) {
 				factory.meshes[i].animation.timeScale = 1.0;

@@ -8,11 +8,14 @@ function initGarbage() {
 		garbage[i].onComplete = function( e ) {
 			checkLoading(); 
 		};
-		garbage[i].isDestroyed = false;
+		garbage[i].isDestroyed = true;
+		garbage[i].radius = 150;
+		garbage[i].degree = 0; 
 		garbage[i].sid = 2 + i; 
 	}
 	
 	garbage.buildInFront = function() {
+		if (game.isOver) return; 
 		var R = 150; 
 		var theta = surus.getOrientation();
 		
@@ -26,6 +29,7 @@ function initGarbage() {
 	}
 	
 	garbage.build = function() { 
+		if (game.isOver) return; 
 		for (var i = 0; i < Paras.garbage.count; ++i) {
 			var R = Math.random() * 100 + 100; 
 			var theta = Math.random() * Math.PI * 2; 
@@ -49,9 +53,10 @@ function initGarbage() {
 	
 	garbage.vanish = function(i) {
 		garbage[i].meshes[0].visible = false; 
-		if (garbage.numAlive() <= Paras.garbage.spawnLeft) {
+		if (garbage.numAlive() <= Paras.garbage.spawnLeft && game.tutorialStep === -1) {
 			setTimeout(function(){ garbage.build(); }, Paras.garbage.spawnTime);
 		}
+		
 	}
 	
 	garbage.hideAll = function() {
@@ -63,6 +68,7 @@ function initGarbage() {
 	garbage.die = function(i) {
 		garbage[i].isDestroyed = true; 
 		setTimeout(function(){ starBlink(1+i, garbage[i].meshes[0].position); garbage.vanish(i); }, Paras.garbage.dieTime);
+		if (game.tutorialStep !== -1) game.tutorial();  
 	}
 	
 	

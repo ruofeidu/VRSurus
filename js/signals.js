@@ -1,5 +1,12 @@
 'use strict';
+/**
+ * Signal Transmission
+ * @author Ruofei Du
+ */
 
+/**
+ * This function is used for debugging purpose to mimic signal transmission via keyboard or XBOX 360
+ */
 function setFakeInput(fakeString) {
 	if (!signals.inputLock) {
 		signals.inputLock = true; 
@@ -12,6 +19,9 @@ function setFakeInput(fakeString) {
 	}
 }
 
+/**
+ * Left slap
+ */
 function actionSlapLeft() {
 	if (surus.curState !== SURUS_SLAP_LEFT)	{
 		surus.slapLeft(); 
@@ -23,6 +33,9 @@ function signalSlapLeft() {
 	if (Paras.signal.fakeInput)	setFakeInput('L128'); else actionSlapLeft(); 
 }
 
+/**
+ * Right slap
+ */
 function actionSlapRight() {
 	if (surus.curState !== SURUS_SLAP_RIGHT)	{
 		surus.slapRight(); 
@@ -34,6 +47,9 @@ function signalSlapRight() {
 	if (Paras.signal.fakeInput)	setFakeInput('R128'); else actionSlapRight(); 
 }
 
+/**
+ * Spray water
+ */
 function actionSpray() {
 	if (surus.curState !== SURUS_SPRAY) {
 		surus.spray(); 
@@ -45,6 +61,9 @@ function signalSpray() {
 	if (Paras.signal.fakeInput)	setFakeInput('S128'); else actionSpray(); 
 }
 
+/**
+ * Thrust
+ */
 function actionThrust() {
 	if (surus.curState !== SURUS_THRUST) {
 		surus.thrust(); 
@@ -56,6 +75,9 @@ function signalThrust() {
 	if (Paras.signal.fakeInput)	setFakeInput('T128'); else actionSpray(); 
 }
 
+/**
+ * Update signals
+ */
 function updateSignals() {
 	if (!signals.lock) {
 		//console.log('update signals');

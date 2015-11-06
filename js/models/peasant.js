@@ -1,4 +1,8 @@
 'use strict';
+/**
+ * Lamberman initialization
+ * @author Ruofei Du
+ */
 function initPeasant() {
 	peasant = new THREE.SEA3D({
 		autoPlay : false, 	// Auto play animations
@@ -8,13 +12,17 @@ function initPeasant() {
 	peasant.ready = false; 
 	peasant.isBuilding = false; 
 	peasant.isWorking = false; 
-	peasant.isDestroyed = false; 
+	peasant.isDestroyed = true; 
 	peasant.radius = 0.0; 
 	peasant.degree = 0.0; 
 	peasant.initPos = []; 
 	peasant.sid = 1; 
 	
+	/**
+	 * Build a model of lamberman
+	 */
 	peasant.build = function(R, theta) {
+		if (game.isOver) return; 
 		if (R === undefined) R = Math.random() * 80 + 100;
 		if (theta === undefined) theta = Math.random() * Math.PI * 2; 
 		
@@ -41,10 +49,17 @@ function initPeasant() {
 		peasant.work();
 	}
 	
-	peasant.buildInFront = function() {
-		peasant.build(100.0, surus.getOrientation());
+	/**
+	 * Build in front of the camera
+	 */
+	peasant.buildInFront = function(delta) {
+		if (delta === undefined) delta = 0; 
+		peasant.build(100.0, surus.getOrientation() + delta);
 	}
 	
+	/**
+	 * Private: hide the peasant
+	 */
 	peasant.hide = function() {
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			if (peasant.meshes[i].position) {
@@ -54,11 +69,17 @@ function initPeasant() {
 		if (audio.axe.isPlaying) audio.axe.stop(); 
 	}
 	
+	/**
+	 * Vanish the peasant and re-spawn
+	 */
 	peasant.vanish = function() {
 		peasant.hide(); 
-		setTimeout(function(){ peasant.build(); }, Paras.peasant.spawnTime);
+		if (game.tutorialStep === -1) setTimeout(function(){ peasant.build(); }, Paras.peasant.spawnTime);
 	}
 	
+	/**
+	 * Die the peasant
+	 */
 	peasant.die = function() {
 		peasant.isBuilding = false; 
 		peasant.isWorking = false; 
@@ -80,9 +101,14 @@ function initPeasant() {
 			}
 		}
 		setTimeout(function(){ starBlink(1, peasant.meshes[0].position); peasant.vanish(); }, Paras.peasant.dieTime);
+		if (game.tutorialStep !== -1) game.tutorial(); 
 	}
 	
+	/**
+	 * Play cutting tree animation
+	 */
 	peasant.work = function() {
+		if (game.isOver) return; 
 		peasant.isBuilding = false; 
 		peasant.isWorking = true; 
 		peasant.isDestroyed = false; 
@@ -103,6 +129,9 @@ function initPeasant() {
 		}
 	}
 	
+	/**
+	 * When the model is loaded
+	 */
 	peasant.onComplete = function( e ) {
 		for (var i = 0; i < peasant.meshes.length; i++) {
 			var vec = new THREE.Vector3(); 

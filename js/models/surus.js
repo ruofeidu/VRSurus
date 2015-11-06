@@ -106,7 +106,6 @@ function initSurus() {
 		console.log( "surus loading:", surus.file.timer.elapsedTime + "ms" );
 		surus.initPosition(); 
 		surus.get().add(audio.howl); 
-		setTimeout(function(){ animate(); }, 1000);	// delay animate for 1 second.
 	};
 	
 	surus.leftwards = function() {

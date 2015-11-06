@@ -1,8 +1,13 @@
 'use strict';
 
+/**
+ * All parameters of the game
+ * @author Ruofei Du
+ */
 var ControlParas = function() {
 	this.mouseLock			=	true; 
 	this.useComposer		=	true; 
+	this.totalItems			=	14; 
 }
 
 var SurusPara = function() {
