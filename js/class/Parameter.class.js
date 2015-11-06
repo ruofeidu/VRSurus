@@ -23,14 +23,14 @@ var ScorePara = function() {
 
 var PeasantPara = function() {
 	this.fileName	=	'./models/peasant.sea';
-	this.initTime	=	3000; 
+	this.initTime	=	6500; 
 	this.dieTime	=	1500; 
 	this.spawnTime	=	4000; 
 }
 
 var FactoryPara = function() {
 	this.fileName	=	'./models/factory.sea'; 
-	this.initTime	=	7000; 
+	this.initTime	=	10500; 
 	this.spawnTime	=	6000; 
 	this.dieTime	=	1500; 
 	this.buildTime	=	7750; 
@@ -45,6 +45,7 @@ var GarbagePara = function() {
 	this.spawnTime	=	1000; 
 	this.spawnLeft	=	1; 
 	this.dieTime	=	1500; 
+	this.initTime	=	3500; 
 }
 
 var CameraPara = function() {

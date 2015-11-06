@@ -109,11 +109,11 @@ THREE.VREffect = function ( renderer, onError ) {
 	var cameraL = new THREE.PerspectiveCamera();
 	var cameraR = new THREE.PerspectiveCamera();
 
-	this.render = function ( scene, camera ) {
+	this.render = function ( scene, camera, sceneO, cameraO ) {
 
 		if ( vrHMD ) {
 
-			var sceneL, sceneR;
+			var sceneL, sceneR, sceneOL, sceneOR;
 
 			if ( Array.isArray( scene ) ) {
 
@@ -153,7 +153,20 @@ THREE.VREffect = function ( renderer, onError ) {
 			renderer.setViewport( size.width, 0, size.width, size.height );
 			renderer.setScissor( size.width, 0, size.width, size.height );
 			renderer.render( sceneR, cameraR );
-
+			
+			renderer.enableScissorTest( false );
+		
+		
+			renderer.enableScissorTest( true );
+			renderer.clearDepth();
+			renderer.setViewport( 0, 0, size.width, size.height );
+			renderer.setScissor( 0, 0, size.width, size.height );
+			renderer.render( sceneO, cameraO ); 
+			renderer.clearDepth();
+			renderer.setViewport( size.width, 0, size.width, size.height );
+			renderer.setScissor( size.width, 0, size.width, size.height );
+			renderer.render( sceneO, cameraO ); 
+			
 			renderer.enableScissorTest( false );
 
 			return;

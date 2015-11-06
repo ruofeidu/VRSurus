@@ -1,6 +1,6 @@
 'use strict';
 // Three.js
-var container, stats, camera, scene, renderer, composer, controls, manager;
+var container, stats, camera, scene, renderer, composer, controls, manager, sceneOrtho, cameraOrtho;
 
 var g_loadedItems = 0, objects = [], trees = [], garbage = [], stars = [], butterflys = [];
 var surus, ground, peasant, factory, debugBall;

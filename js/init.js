@@ -42,6 +42,9 @@ function initPostProcessing() {
 function initCamera() {
 	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 100000 );
 	camera.position.set( Paras.camera.posX, Paras.camera.posY, Paras.camera.posZ );
+	
+	cameraOrtho = new THREE.OrthographicCamera( - window.innerWidth / 2, window.innerWidth / 2, window.innerHeight / 2, - window.innerHeight / 2, 1, 10 );
+	cameraOrtho.position.z = 10;
 }
 
 function initRenderer() {
@@ -49,6 +52,7 @@ function initRenderer() {
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.setClearColor( 0x000000, 1 );
+	renderer.autoClear = false; 
 	
 	container = document.createElement( Paras.canvas.container );
 	document.body.appendChild( container );
@@ -67,6 +71,7 @@ function initStat() {
 function initScene() {
 	scene = new THREE.Scene();
 	scene.fog = new THREE.Fog(0xabaf99, 0, 3000);
+	sceneOrtho = new THREE.Scene();
 }
 
 function initVR() {

@@ -4,8 +4,8 @@ var game = {
 	tutorial	:	false,
 	godmode		:	false,
 	startTime	:	0,
-	totalTime	:	120,
-	timeLeft	:	120,
+	totalTime	:	63,
+	timeLeft	:	63,
 	tutorialStep : -1,
 }
 
@@ -16,7 +16,7 @@ game.tutorial = function() {
 	} else
 	if (game.tutorialStep == 0) {
 		game.tutorialStep = 1; 
-		worker.buildInFront(); 
+		peasant.buildInFront(); 
 	} else 
 	if (game.tutorialStep == 1) {
 		game.tutorialStep = 2; 
@@ -30,8 +30,8 @@ game.tutorial = function() {
 game.start = function() {
 	game.tutorialStep = -1; 
 	game.startTime	= 	+new Date(); 
-	game.timeLeft 	=	game.totalTime; 
-	garbage.build(); 
+	game.timeLeft 	=	game.totalTime;
+	setTimeout(function(){ garbage.build(); }, Paras.garbage.initTime);
 	setTimeout(function(){ peasant.buildInFront() }, Paras.peasant.initTime);
 	setTimeout(function(){ factory.buildInFront() }, Paras.factory.initTime);
 	audio.bgm.play(); 

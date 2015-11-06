@@ -12,7 +12,7 @@ function initGarbage() {
 		garbage[i].sid = 2 + i; 
 	}
 	
-	garbage.buldInFront = function() {
+	garbage.buildInFront = function() {
 		var R = 150; 
 		var theta = surus.getOrientation();
 		
