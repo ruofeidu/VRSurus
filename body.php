@@ -12,6 +12,8 @@
 	<script type="text/javascript" src="js/models/stars.js"></script>
 	<script type="text/javascript" src="js/models/score.js"></script>
 	<script type="text/javascript" src="js/models/tto.js"></script>
+	<script type="text/javascript" src="js/models/smoke.js"></script>
+	<script type="text/javascript" src="js/models/instruction.js"></script>
 	<script type="text/javascript" src="js/particles/water.js"></script>
 	<script type="text/javascript" src="js/particles/fire.js"></script>
 	<script type="text/javascript" src="js/particles/wind.js"></script>

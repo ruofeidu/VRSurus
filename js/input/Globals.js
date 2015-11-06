@@ -10,7 +10,7 @@ var container, stats, camera, scene, renderer, composer, controls, manager, scen
 var g_loadedItems = 0, objects = [], trees = [], garbage = [], stars = [], butterflys = [];
 var surus, ground, peasant, factory, debugBall;
 var water = {}, fire = {}, wind = {};
-var audio = {}, game = {}, score = {}, tto = {};
+var audio = {}, game = {}, score = {}, tto = {}, instruction = {};
 var signals = {
 	ch : 'a',
 	lock : false,

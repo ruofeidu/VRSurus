@@ -8,6 +8,7 @@ var game = {
 	tutorial	:	false,
 	isOver		: 	false,
 	godmode		:	false,
+	stopAudio	:	false,
 	startTime	:	0,
 	totalTime	:	63,
 	timeLeft	:	63,
@@ -21,15 +22,27 @@ game.tutorial = function() {
 	if (game.tutorialStep === -1) {
 		audio.tutorial.play(); 
 		game.tutorialStep = 0; 
+		instruction.showWind(); 
 		garbage.buildInFront(); 
 	} else
 	if (game.tutorialStep === 0) {
-		setTimeout(function(){ game.tutorialStep = 1; peasant.buildInFront(30.0 / 180.0 * Math.PI);  }, Paras.garbage.dieTime);
+		setTimeout(function(){ 
+			game.tutorialStep = 1; 
+			instruction.showWater(); 
+			peasant.buildInFront(30.0 / 180.0 * Math.PI);  
+		}, Paras.garbage.dieTime);
 	} else 
 	if (game.tutorialStep === 1) {
-		setTimeout(function(){ game.tutorialStep = 2; factory.buildInFront(180.0 / 180.0 * Math.PI);  }, Paras.peasant.dieTime);
+		setTimeout(function(){ 
+			instruction.showFire(); 
+			game.tutorialStep = 2; 
+			factory.buildInFront(180.0 / 180.0 * Math.PI);  
+		}, Paras.peasant.dieTime);
 	} else {
-		setTimeout(function(){ game.tutorialStep = -1; game.start();   }, Paras.factory.dieTime + 2000);
+		setTimeout(function(){ 
+			game.tutorialStep = -1; 
+			game.start();   
+		}, Paras.factory.dieTime + 2000);
 	}
 }
 
@@ -73,6 +86,7 @@ game.update = function() {
  * End the game, close all audio and visual, cheers()!
  */
 game.over = function() {
+	if (game.isOver) return; 
 	game.isOver = true; 
 	game.stopAudio = true;
 	factory.hide();

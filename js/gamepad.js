@@ -77,6 +77,18 @@ function updateGamepad() {
 				}
 			}
 			
+			if (pad['start'].pressed) {
+				if (!padState.btnStart) {
+					game.tutorial(); 
+				}
+			}
+			
+			if (pad['select'].pressed) {
+				if (!padState.btnSelect) {
+					game.start(); 
+				}
+			}
+			
 			padState.btnSelect = pad['select'].pressed;
 			padState.btnStart = pad['start'].pressed;
 			padState.btnLB = pad['leftShoulder0'].pressed;

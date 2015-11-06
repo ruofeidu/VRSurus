@@ -124,27 +124,52 @@ function initSurus() {
 		return Math.abs(d1 - d2) < Math.PI * delta / 180.0; 
 	}
 	
-	surus.scanEnemy = function(o) {
+	/**
+	 * Scan and kill factory in the field of view
+	 */
+	surus.scanFactory = function(o) {
 		o = o || surus.getOrientation(); 
 		if (!factory.isDestroyed && surus.checkDegree(o, factory.degree, 30) ) {
 			factory.die(); 
 			score.val += 500; 
 		}
-		
-		if (!peasant.isDestroyed && surus.checkDegree(o, peasant.degree, 30) ) {
-			peasant.die(); 
-			score.val += 300; 
-		}
-		
+	}
+	
+	/**
+	 * Scan and kill garbage in the field of view
+	 */
+	surus.scanRubbish = function(o) {
+		o = o || surus.getOrientation(); 
 		for (var i = 0; i < Paras.garbage.count; ++i) {
-			if (!garbage[i].isDestroyed && surus.checkDegree(o, garbage[i].degree, 30) ) {
+			if (!garbage[i].isDestroyed && surus.checkDegree(o, garbage[i].degree, 20) ) {
 				garbage.die(i);
 				score.val += 100; 				
 			}
 		}
 	}
 	
+	/**
+	 * Scan and kill lamberman in the field of view
+	 */
+	surus.scanPeasant = function(o) {
+		o = o || surus.getOrientation(); 
+		if (!peasant.isDestroyed && surus.checkDegree(o, peasant.degree, 30) ) {
+			peasant.die(); 
+			score.val += 300; 
+		}
+	}
+	/**
+	 * God mode, scan all enemies
+	 */
+	surus.scanEnemy = function(o) {
+		o = o || surus.getOrientation(); 
+		scanFactory(o); 
+		scanPeasant(o); 
+		scanRubbish(o); 
+	}
+	
 	surus.cheer = function() {
+		console.log("Game ends, cheers!"); 
 		surus.cheering = true; 
 		var theta = surus.getOrientation(); 
 		var R = 100; 
@@ -155,11 +180,12 @@ function initSurus() {
 	}
 	
 	surus.syncCamera = function() {
-		if (surus.cheering) return; 
 		surus.nosePos.setFromMatrixPosition(surus.get().skeleton.bones[27].matrixWorld);
 		surus.leftArmPos.setFromMatrixPosition(surus.get().skeleton.bones[15].matrixWorld);
 		surus.rightArmPos.setFromMatrixPosition(surus.get().skeleton.bones[16].matrixWorld);
 		surus.headPos.setFromMatrixPosition(surus.get().skeleton.bones[9].matrixWorld);
+		
+		if (surus.cheering === true) return; 
 		
 		if (Math.abs(camera.rotation.y) > Math.PI / 2 || ( Math.abs(camera.rotation.z) < Math.PI / 2 && Math.abs(camera.rotation.x) < Math.PI / 2 ) ) {
 			surus.get().rotation.y = camera.rotation.y; 

@@ -171,11 +171,13 @@ function init() {
 	initSkySphere(); 
 	initScore(); 
 	initTTO(); 
+	initInstruction(); 
 	initSurus(); 
 	
 	initWater(); 
 	initFire(); 
 	initWind(); 
+	initSmoke(); 
 	initStars(); 
 	
 	initLights(); 

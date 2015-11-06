@@ -16,11 +16,9 @@ function initFactory() {
 	/**
 	 * Build a factory in the game.
 	 */
-	factory.build = function(R, theta, respawn) {
+	factory.build = function(R, theta) {
 		if (game.isOver) return; 
 		if (R === undefined) R = Math.random() * 60 + 120;
-		if (theta === undefined) theta = Math.random() * Math.PI * 2; 
-		if (respawn === undefined) respawn = true; 
 		factory.radius = R; 
 		factory.degree = theta; 
 		factory.isBuilding = true; 
@@ -40,7 +38,7 @@ function initFactory() {
 				factory.meshes[i].animation.play("root");
 			}
 		}
-		if (respawn) setTimeout(function(){ factory.work() }, Paras.factory.buildTime);
+		setTimeout(function(){ factory.work() }, Paras.factory.buildTime);
 	}
 	
 	factory.buildInFront = function() {

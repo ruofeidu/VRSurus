@@ -36,6 +36,7 @@
 	<script type="text/javascript" src="js/loaders/sea3d/SEA3DLoader.js"></script>
 	<script type="text/javascript" src="js/loaders/sea3d/SEA3DLegacy.js"></script>
 	<script type="text/javascript" src="js/lib/GPUParticleSystem.js"></script>
+	<script type="text/javascript" src="js/lib/ParticleEngine.js"></script>
 	<script type="text/javascript" src="js/lib/mousetrap.min.js"></script>
 	
 	<script type="text/javascript" src="js/lib/vr/webvr-polyfill.js"></script>

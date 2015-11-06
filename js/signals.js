@@ -25,7 +25,7 @@ function setFakeInput(fakeString) {
 function actionSlapLeft() {
 	if (surus.curState !== SURUS_SLAP_LEFT)	{
 		surus.slapLeft(); 
-		surus.scanEnemy(surus.getOrientation());
+		surus.scanRubbish(surus.getOrientation());
 	}		
 }
 
@@ -39,7 +39,7 @@ function signalSlapLeft() {
 function actionSlapRight() {
 	if (surus.curState !== SURUS_SLAP_RIGHT)	{
 		surus.slapRight(); 
-		surus.scanEnemy(surus.getOrientation()); 
+		surus.scanRubbish(surus.getOrientation()); 
 	}		
 }
 
@@ -53,7 +53,7 @@ function signalSlapRight() {
 function actionSpray() {
 	if (surus.curState !== SURUS_SPRAY) {
 		surus.spray(); 
-		surus.scanEnemy(surus.getOrientation()); 
+		surus.scanPeasant(surus.getOrientation()); 
 	}
 }
 
@@ -67,7 +67,7 @@ function signalSpray() {
 function actionThrust() {
 	if (surus.curState !== SURUS_THRUST) {
 		surus.thrust(); 
-		surus.scanEnemy(surus.getOrientation()); 
+		surus.scanFactory(surus.getOrientation()); 
 	}
 }
 
