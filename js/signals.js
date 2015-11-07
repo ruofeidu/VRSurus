@@ -97,7 +97,8 @@ function updateSignals() {
 		}
 		
 		if (!factory.isDestoyed && (factory.isWorking || factory.isBuilding)) {
-			signals.vibration = 1; 
+			signals.vibration += 1; 
+			if (signals.vibration > 250) signals.vibration = 250; 
 		} else {
 			signals.vibration = 0;  
 		}
@@ -106,8 +107,8 @@ function updateSignals() {
 			signals.servoLeft = 0; 
 			signals.servoRight = 0; 
 		} else {
-			signals.servoLeft = 1; 
-			signals.servoRight = 1;   
+			signals.servoLeft = 170; 
+			signals.servoRight = 170;   
 		}
 		
 		$.ajax({url:(Paras.signal.baseURL + '?getInputSetOuptut=' + signals.getOutputString()) , success:function(result){

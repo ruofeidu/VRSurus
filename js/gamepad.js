@@ -73,18 +73,20 @@ function updateGamepad() {
 			
 			if (pad['select'].pressed) {
 				if (!padState.btnSelect) {
-					game.start(); 
+					console.log('fuck'); 					game.start(); 
 				}
 			}
 			
 			if (pad['start'].pressed) {
 				if (!padState.btnStart) {
+					console.log('fuck'); 
+					padState.btnStart = true; 
 					game.tutorial(); 
 				}
 			}
 			
-			padState.btnSelect = pad['select'].pressed;
-			padState.btnStart = pad['start'].pressed;
+			//padState.btnSelect = pad['select'].pressed;
+			//padState.btnStart = pad['start'].pressed;
 			padState.btnLB = pad['leftShoulder0'].pressed;
 			padState.btnLT = pad['leftShoulder1'].pressed;
 			padState.btnRB = pad['rightShoulder0'].pressed;
