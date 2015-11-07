@@ -47,12 +47,6 @@ function updateGamepad() {
 	for (var i = 0; i < pads.length; ++i) {
 		var pad = pads[i];
 		if (pad) {
-			if (pad['start'].pressed) {
-				if (!padState.btnStart) {
-					game.start(); 
-				}
-			}
-			
 			if (pad['faceButton0'].pressed) {
 				if (!padState.btnA) {
 					signalSpray(); 
@@ -77,15 +71,15 @@ function updateGamepad() {
 				}
 			}
 			
-			if (pad['start'].pressed) {
-				if (!padState.btnStart) {
-					game.tutorial(); 
-				}
-			}
-			
 			if (pad['select'].pressed) {
 				if (!padState.btnSelect) {
 					game.start(); 
+				}
+			}
+			
+			if (pad['start'].pressed) {
+				if (!padState.btnStart) {
+					game.tutorial(); 
 				}
 			}
 			

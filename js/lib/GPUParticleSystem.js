@@ -23,6 +23,7 @@ THREE.GPUParticleSystem = function(options) {
   // parse options and use defaults
   self.PARTICLE_COUNT = options.maxParticles || 1000000;
   self.PARTICLE_CONTAINERS = options.containerCount || 1;
+  self.TEXTURE_FILE = options.textureFile || "textures/particle2.png";
   self.PARTICLES_PER_CONTAINER = Math.ceil(self.PARTICLE_COUNT / self.PARTICLE_CONTAINERS);
   self.PARTICLE_CURSOR = 0;
   self.time = 0;
@@ -201,7 +202,7 @@ THREE.GPUParticleSystem = function(options) {
   self.particleNoiseTex = THREE.ImageUtils.loadTexture("textures/perlin-512.png");
   self.particleNoiseTex.wrapS = self.particleNoiseTex.wrapT = THREE.RepeatWrapping;
 
-  self.particleSpriteTex = THREE.ImageUtils.loadTexture("textures/particle2.png");
+  self.particleSpriteTex = THREE.ImageUtils.loadTexture( self.TEXTURE_FILE );
   self.particleSpriteTex.wrapS = self.particleSpriteTex.wrapT = THREE.RepeatWrapping;
 
   self.particleShaderMat = new THREE.ShaderMaterial({

@@ -33,4 +33,16 @@ function initAudio() {
 	audio.howl.load( 'sounds/howl.ogg' );
 	audio.howl.setRefDistance( 100 );
 	
+	
+	audio.fire = new THREE.Audio( listener );
+	audio.fire.load( 'sounds/fire.ogg' );
+	audio.fire.setRefDistance( 100 );
+	
+	audio.wind = new THREE.Audio( listener );
+	audio.wind.load( 'sounds/wind.ogg' );
+	audio.wind.setRefDistance( 100 );
+	
+	audio.water = new THREE.Audio( listener );
+	audio.water.load( 'sounds/water.ogg' );
+	audio.water.setRefDistance( 100 );
 }

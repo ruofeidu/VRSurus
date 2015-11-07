@@ -37,6 +37,15 @@ function initGUI() {
 	p.add(water.opt, "lifetime", .1, 10);
 	p.add(water.opt, "turbulence", 0, 1);
 	
+	/*
+	p = gui.addFolder('Smoke Parameters');
+	p.add(smoke.opt, "velocityRandomness", 0, 3);
+	p.add(smoke.opt, "positionRandomness", 0, 3);
+	p.add(smoke.opt, "size", 1, 20);
+	p.add(smoke.opt, "sizeRandomness", 0, 25);
+	p.add(smoke.opt, "colorRandomness", 0, 1);
+	p.add(smoke.opt, "lifetime", .1, 10);
+	p.add(smoke.opt, "turbulence", 0, 1);
 	
 	p = gui.addFolder('Wind Parameters');
 	p.add(wind.opt1.velocity, "x", -9.9, 9.9);
@@ -49,7 +58,7 @@ function initGUI() {
 	p.add(wind.opt1, "colorRandomness", 0, 1);
 	p.add(wind.opt1, "lifetime", .1, 10);
 	p.add(wind.opt1, "turbulence", 0, 1);
-	
+	*/
 	p = gui.addFolder('Score Parameters');
 	p.add(Paras.score.relPos, "x", -39.9, 39.9);
 	p.add(Paras.score.relPos, "y", -39.9, 39.9);

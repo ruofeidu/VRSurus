@@ -24,6 +24,7 @@ function animate() {
 	if (water.sys) water.update(delta); 
 	if (fire.sys) fire.update(delta); 
 	if (wind.sys2) wind.update(delta); 
+	if (smoke.sys) smoke.update(delta); 
 	starsUpdate(); 
 	game.update(); 
 	render( delta );

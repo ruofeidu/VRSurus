@@ -19,6 +19,7 @@ var game = {
  * Show the tutorial of the game
  */
 game.tutorial = function() {
+	console.log('game tutorial');
 	if (game.tutorialStep === -1) {
 		audio.tutorial.play(); 
 		game.tutorialStep = 0; 
@@ -27,22 +28,27 @@ game.tutorial = function() {
 	} else
 	if (game.tutorialStep === 0) {
 		setTimeout(function(){ 
-			game.tutorialStep = 1; 
 			instruction.showWater(); 
+		}, 1500);
+		setTimeout(function(){ 
+			game.tutorialStep = 1; 
 			peasant.buildInFront(30.0 / 180.0 * Math.PI);  
-		}, Paras.garbage.dieTime);
+		}, 2500);
 	} else 
 	if (game.tutorialStep === 1) {
 		setTimeout(function(){ 
 			instruction.showFire(); 
+		}, 1500);
+		
+		setTimeout(function(){ 
 			game.tutorialStep = 2; 
 			factory.buildInFront(180.0 / 180.0 * Math.PI);  
-		}, Paras.peasant.dieTime);
+		}, 2500);
 	} else {
 		setTimeout(function(){ 
 			game.tutorialStep = -1; 
 			game.start();   
-		}, Paras.factory.dieTime + 2000);
+		}, 3500);
 	}
 }
 

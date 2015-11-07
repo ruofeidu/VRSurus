@@ -19,6 +19,7 @@ function initFactory() {
 	factory.build = function(R, theta) {
 		if (game.isOver) return; 
 		if (R === undefined) R = Math.random() * 60 + 120;
+		if (theta === undefined) theta = Math.random() * Math.PI * 2; 
 		factory.radius = R; 
 		factory.degree = theta; 
 		factory.isBuilding = true; 
@@ -62,6 +63,7 @@ function initFactory() {
 	factory.die = function() {
 		factory.isDestroyed = true; 
 		factory.isWorking = false; 
+		smoke.play(); 
 		if (!audio.explode.isPlaying) audio.explode.play(); 
 		setTimeout(function(){ starBlink(0, factory.meshes[0].position); factory.vanish(); }, Paras.factory.dieTime);
 		if (game.tutorialStep !== -1) game.tutorial();  

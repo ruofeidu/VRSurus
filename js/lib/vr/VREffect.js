@@ -154,10 +154,6 @@ THREE.VREffect = function ( renderer, onError ) {
 			renderer.setScissor( size.width, 0, size.width, size.height );
 			renderer.render( sceneR, cameraR );
 			
-			renderer.enableScissorTest( false );
-		
-		
-			renderer.enableScissorTest( true );
 			renderer.clearDepth();
 			renderer.setViewport( 0, 0, size.width, size.height );
 			renderer.setScissor( 0, 0, size.width, size.height );
