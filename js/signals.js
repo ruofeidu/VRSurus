@@ -97,8 +97,9 @@ function updateSignals() {
 		}
 		
 		if (!factory.isDestoyed && (factory.isWorking || factory.isBuilding)) {
+			if (signals.vibration == 0) signals.vibration = 50; 
 			signals.vibration += 1; 
-			if (signals.vibration > 250) signals.vibration = 250; 
+			if (signals.vibration > 250) signals.vibration = 150; 
 		} else {
 			signals.vibration = 0;  
 		}
