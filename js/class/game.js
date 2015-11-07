@@ -23,25 +23,33 @@ game.tutorial = function() {
 	if (game.tutorialStep === -1) {
 		audio.tutorial.play(); 
 		game.tutorialStep = 0; 
-		instruction.showWind(); 
-		garbage.buildInFront(); 
+		instruction.showIns(); 
 	} else
 	if (game.tutorialStep === 0) {
+		setTimeout(function(){ 
+			instruction.showWind(); 
+		}, 1500);
+		setTimeout(function(){ 
+			game.tutorialStep = 1; 
+			garbage.buildInFront(); 
+		}, 2500);
+	} else
+	if (game.tutorialStep === 1) {
 		setTimeout(function(){ 
 			instruction.showWater(); 
 		}, 1500);
 		setTimeout(function(){ 
-			game.tutorialStep = 1; 
+			game.tutorialStep = 2; 
 			peasant.buildInFront(30.0 / 180.0 * Math.PI);  
 		}, 2500);
 	} else 
-	if (game.tutorialStep === 1) {
+	if (game.tutorialStep === 2) {
 		setTimeout(function(){ 
 			instruction.showFire(); 
 		}, 1500);
 		
 		setTimeout(function(){ 
-			game.tutorialStep = 2; 
+			game.tutorialStep = 3; 
 			factory.buildInFront(180.0 / 180.0 * Math.PI);  
 		}, 2500);
 	} else {

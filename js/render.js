@@ -7,7 +7,6 @@ function onWindowResize() {
 	cameraOrtho.top = window.innerHeight / 2;
 	cameraOrtho.bottom = - window.innerHeight / 2;
 	cameraOrtho.updateProjectionMatrix();
-	score.updateHUD(); 
 	camera.updateProjectionMatrix();
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	if (vvr.effect) vvr.effect.setSize(window.innerWidth, window.innerHeight);

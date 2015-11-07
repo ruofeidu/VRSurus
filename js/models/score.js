@@ -26,8 +26,9 @@ function initScore() {
 		score.context.font = "Bold 40px Arial";
 		score.context.fillStyle = "rgba(255,255,255,0.95)";
 		score.context.clearRect(0, 0, score.canvas.width, score.canvas.height);
-		score.context.fillText('Great Job!', 160, 256 - 40 - 10);
-		score.context.fillText('Your Score: ' + score.val, 128, 256);
+		score.context.fillText('Awesome!', 160, 256 - 40 - 10);
+		score.context.font = "Bold 30px Arial";
+		score.context.fillText('You saved ' + score.val + ' trees!', 128, 256);
 	}
 	
 	score.hide = function() {

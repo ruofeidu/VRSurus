@@ -1,4 +1,7 @@
 'use strict';
+/**
+ * The evil factory
+ */
 function initFactory() {
 	factory = new THREE.SEA3D({
 		autoPlay : false, 	// Auto play animations

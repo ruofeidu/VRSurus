@@ -82,7 +82,35 @@ function updateSignals() {
 	if (!signals.lock) {
 		//console.log('update signals');
 		signals.lock = true; 
-		$.ajax({url:(Paras.signal.baseURL + '?getInputSetOuptut=' + signals.outputString) , success:function(result){
+		
+		if (peasant.isWorking) {
+			if (peasant.isLeft()) {
+				signals.selonoidLeft = 1; 
+				signals.selonoidRight = 0; 
+			} else {
+				signals.selonoidLeft = 0; 
+				signals.selonoidRight = 1; 
+			}
+		} else {
+			signals.selonoidRight = 0; 
+			signals.selonoidLeft = 0; 
+		}
+		
+		if (!factory.isDestoyed && (factory.isWorking || factory.isBuilding)) {
+			signals.vibration = 1; 
+		} else {
+			signals.vibration = 0;  
+		}
+		
+		if (surus.curState === SURUS_IDLE) {
+			signals.servoLeft = 0; 
+			signals.servoRight = 0; 
+		} else {
+			signals.servoLeft = 1; 
+			signals.servoRight = 1;   
+		}
+		
+		$.ajax({url:(Paras.signal.baseURL + '?getInputSetOuptut=' + signals.getOutputString()) , success:function(result){
 				signals.inputString = result;
 				var c = signals.inputString.charAt(0);
 				var val = parseInt(signals.inputString.substring(1)); 

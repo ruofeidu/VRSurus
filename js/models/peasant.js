@@ -104,6 +104,14 @@ function initPeasant() {
 		if (game.tutorialStep !== -1) game.tutorial(); 
 	}
 	
+	peasant.isLeft = function() {
+		var d1 = Math.abs( peasant.degree - surus.getOrientation() + Math.PI * 2); 
+		while (d1 >= Math.PI * 2) d1 -= Math.PI * 2; 
+		var d2 = Math.abs( surus.getOrientation() - peasant.degree + Math.PI * 2); 
+		while (d2 >= Math.PI * 2) d2 -= Math.PI * 2; 
+		return d1 > d2; 
+	}
+	
 	/**
 	 * Play cutting tree animation
 	 */

@@ -3,15 +3,23 @@
 function initGUI() {
 	if (!Paras.debugMode) return; 
 	var gui = new dat.GUI();
-	var p = gui.addFolder('Camera Parameters');
+	
+	var p = gui.addFolder('Servo Parameters'); 
+	p.add(signals, "vibration", 0, 255).listen();  
+	p.add(signals, "selonoidLeft", 0, 1).listen(); 
+	p.add(signals, "selonoidRight", 0, 1).listen(); 
+	p.add(signals, "servoLeft", 0, 180).listen(); 
+	p.add(signals, "servoRight", 0, 180).listen(); 
+	
 	/*
+	p = gui.addFolder('Camera Parameters');
 	p.add(camera.rotation, "x", -1.6, 1.6).step(0.1).listen();
 	p.add(camera.rotation, "y", -1.6, 1.6).step(0.1).listen();
 	p.add(camera.rotation, "z", -1.6, 1.6).step(0.1).listen();
 	p.add(camera.position, "x", -10.0, 10.0).step(0.1).listen();
 	p.add(camera.position, "y", 25.0, 27.0).step(0.1).listen();
 	p.add(camera.position, "z", -10.0, 10.0).step(0.1).listen();
-	*/
+	
 	p.add(Paras.camera, "posX", -10.0, 10.0);
 	p.add(Paras.camera, "posY", 0, 100.0);
 	p.add(Paras.camera, "posZ", -10.0, 10.0);
@@ -37,7 +45,6 @@ function initGUI() {
 	p.add(water.opt, "lifetime", .1, 10);
 	p.add(water.opt, "turbulence", 0, 1);
 	
-	/*
 	p = gui.addFolder('Smoke Parameters');
 	p.add(smoke.opt, "velocityRandomness", 0, 3);
 	p.add(smoke.opt, "positionRandomness", 0, 3);
@@ -58,11 +65,12 @@ function initGUI() {
 	p.add(wind.opt1, "colorRandomness", 0, 1);
 	p.add(wind.opt1, "lifetime", .1, 10);
 	p.add(wind.opt1, "turbulence", 0, 1);
-	*/
+	
 	p = gui.addFolder('Score Parameters');
 	p.add(Paras.score.relPos, "x", -39.9, 39.9);
 	p.add(Paras.score.relPos, "y", -39.9, 39.9);
 	p.add(Paras.score.relPos, "z", -39.9, 39.9);
+	*/
 }
 
 function initDebugBall() {

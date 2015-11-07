@@ -31,21 +31,21 @@ function initSurus() {
 	
 	surus.slapLeft = function() {
 		surus.curState = SURUS_SLAP_LEFT; 
-	    if (!audio.wind.isPlaying) audio.wind.play(); 
+	    if (!audio.wind.isPlaying) audio.wind.play(); else { audio.wind.stop(); audio.wind.play(); }
 		surus.get().play('attack0', Paras.surus.crossFade); 
 		setTimeout(function(){ surus.idle(); }, 1200);
 	}
 	
 	surus.slapRight = function() {
 		surus.curState = SURUS_SLAP_RIGHT; 
-	    if (!audio.wind.isPlaying) audio.wind.play(); 
+	    if (!audio.wind.isPlaying) audio.wind.play();  else { audio.wind.stop(); audio.wind.play(); }
 		surus.get().play('attack2', Paras.surus.crossFade); 
 		setTimeout(function(){ surus.idle(); }, 1500);
 	}
 	
 	surus.spray = function() {
 		surus.curState = SURUS_SPRAY; 
-	    if (!audio.water.isPlaying) audio.water.play(); 
+	    if (!audio.water.isPlaying) audio.water.play(); else { audio.water.stop(); audio.water.play(); }
 		surus.get().play('roar', Paras.surus.crossFade); 
 		setTimeout(function(){ surus.idle(); }, 1200 * 2);
 	}
@@ -53,7 +53,7 @@ function initSurus() {
 	surus.thrust = function() {
 		surus.curState = SURUS_THRUST; 
 	    if (!audio.howl.isPlaying) audio.howl.play(); 
-	    if (!audio.fire.isPlaying) audio.fire.play(); 
+	    if (!audio.fire.isPlaying) audio.fire.play(); else { audio.water.stop(); audio.water.play(); }
 		surus.get().play('run', Paras.surus.crossFade); 
 		setTimeout(function(){ surus.idle(); }, 2000);
 	}
