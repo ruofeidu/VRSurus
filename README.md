@@ -27,7 +27,7 @@ We the NinjaTerp team! Feel free to visit VRSurus.com for more information!
 
 ### Presentation
 The game is presented on UIST 2015 Student Innovation Contest. The project is still work-in-progress for future publications. For now, please cite
-> Du, R., He, L., Varshney, A. VRSurus: A Tangible Virtual-Reality Game for Environmental Protection. (2015) UIST 2015 Student Innovation Contest. http://vrsurus.com
+> Du, R., He, L. VRSurus: Enhancing Interactivity and Tangibility of Puppets in Virtual Reality. In Proceedings of the 33rd Annual ACM Conference Extended Abstracts on Human Factors in Computing Systems (CHI 16), 8 pages. ACM.
 
 If you find our idea or code useful for your projects.
 
